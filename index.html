@@ -1,42 +1,90 @@
 <!doctype html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="noindex, nofollow">
-  <meta name="referrer" content="no-referrer">
-  <meta name="color-scheme" content="dark">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:; base-uri 'none'; form-action 'none'">
-  <title>Сайт готовится к запуску</title>
-  <link rel="icon" href="data:,">
-  <style>
-    * { box-sizing: border-box; }
-    html { min-height: 100%; background: #101315; }
-    body {
-      margin: 0; min-height: 100vh; min-height: 100svh;
-      display: grid; place-items: center; padding: 28px;
-      color: #f4f5f2; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      -webkit-font-smoothing: antialiased;
-    }
-    main {
-      width: min(100%, 620px); padding: clamp(32px, 7vw, 64px);
-      border: 1px solid #2b3032; border-radius: 28px; background: #161a1c;
-    }
-    .status {
-      display: flex; align-items: center; gap: 10px; margin: 0 0 30px;
-      color: #b6c7b6; font-size: 13px; font-weight: 600; letter-spacing: .08em;
-    }
-    .status::before { content: ""; width: 7px; height: 7px; flex: 0 0 7px; border-radius: 50%; background: #a8c79f; }
-    h1 { margin: 0; max-width: 470px; font-size: clamp(32px, 6vw, 46px); line-height: 1.13; font-weight: 600; letter-spacing: -.045em; text-wrap: balance; }
-    .note { margin: 24px 0 0; color: #a7adb0; font-size: 17px; line-height: 1.6; }
-    @media (max-width: 380px) { body { padding: 18px; } main { padding: 28px; } }
-  </style>
-</head>
-<body>
-  <main>
-    <p class="status">СКОРО</p>
-    <h1>Сайт готовится к запуску</h1>
-    <p class="note">Загляните немного позже.</p>
-  </main>
-</body>
-</html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Strongary — твой ритм. Каждый день.</title>
+<meta name="description" content="Тренировки, прогресс и приёмы — в твоём ритме. Strongary для iPhone и Apple Watch: планируй занятия, записывай подходы и веди дневник приёмов. Скоро в TestFlight.">
+<meta name="theme-color" content="#f7f8f5">
+<link rel="canonical" href="https://strongary.com/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:url" content="https://strongary.com/">
+<meta property="og:title" content="Strongary — твой ритм. Каждый день.">
+<meta property="og:description" content="Тренировки. Приёмы. Твой прогресс. Познакомься со Strongary для iPhone и Apple Watch.">
+<meta property="og:image" content="https://strongary.com/social-preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="styles.css?v=20261017-1">
+<script src="site-config.js?v=20261017-1" defer></script>
+<script src="site.js?v=20261017-1" defer></script>
+<script src="analytics.js" defer></script>
+</head><body><svg class="svg-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<symbol id="arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+<symbol id="down" viewBox="0 0 24 24"><path d="M12 4v16m-6-6 6 6 6-6"/></symbol>
+<symbol id="plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+<symbol id="close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+<symbol id="calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="4"/><path d="M7 2v6m10-6v6M3 11h18m-13 5h3"/></symbol>
+<symbol id="check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+<symbol id="chart" viewBox="0 0 24 24"><path d="M4 4v16h16M8 14l4-4 4 2 5-7"/></symbol>
+<symbol id="bell" viewBox="0 0 24 24"><path d="M8 19a4 4 0 0 0 8 0M4 18h16l-2-4V9A6 6 0 0 0 6 9v5Z"/></symbol>
+<symbol id="watch-icon" viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="5"/><path d="m8 5 1-4h6l1 4M8 19l1 4h6l1-4m3-10h2v4h-2M9 12l2 2 4-4"/></symbol>
+</svg><a class="skip-link" href="#main">К содержимому</a>
+<header class="site-header"><div class="wrap header-inner">
+<a class="brand" href="/" aria-label="Strongary — на главную"><img src="icon.webp" width="32" height="32" alt=""><span>Strongary</span></a>
+<nav aria-label="Основная навигация"><a href="#training">Тренировки</a><a href="#intakes">Приёмы</a><a href="#watch">Apple Watch</a></nav>
+<a class="nav-cta" href="#testflight">Попробовать <span aria-hidden="true">↗</span></a>
+</div><div class="reading-progress" aria-hidden="true"></div></header><main id="main">
+<section class="hero" aria-labelledby="hero-title">
+<div class="hero-copy wrap">
+<p class="eyebrow hero-entry">STRONGARY · ДЛЯ IPHONE И APPLE WATCH</p>
+<h1 id="hero-title" class="hero-entry">Твой ритм.<br><span>Каждый день.</span></h1>
+<p class="hero-description hero-entry">Тренируйся. Заботься о себе. Замечай прогресс.<br class="desktop-break"> Всё, что помогает продолжать, — в одном приложении.</p>
+<div class="hero-actions hero-entry"><a class="button button-dark" href="#training">Познакомиться ближе <svg class="icon" aria-hidden="true"><use href="#down"/></svg></a><a class="text-link" href="#testflight">Скоро в TestFlight <span aria-hidden="true">↗</span></a></div>
+</div>
+<div class="hero-stage wrap" aria-label="Экраны Strongary: тренировка, дневник и приёмы">
+<div class="hero-halo" aria-hidden="true"></div>
+<div class="hero-side-note note-training"><span class="tiny-label">01 / ТРЕНИРОВКИ</span><p>С каждым подходом<br>ближе к себе.</p></div>
+<div class="hero-device hero-device-left"><a class="device-phone " href="assets/screenshots/iphone/dark/workout.png" data-zoom aria-label="Увеличить: Тренировка: упражнения, вес и повторения"><img src="assets/screenshots/iphone/dark/workout.webp" alt="Тренировка: упражнения, вес и повторения" width="640" height="1387" fetchpriority="high" decoding="async"><span class="device-zoom" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#plus"/></svg></span></a></div>
+<div class="hero-device hero-device-center"><a class="device-phone " href="assets/screenshots/iphone/light/diary.png" data-zoom aria-label="Увеличить: Дневник с календарём и историей тренировок"><img src="assets/screenshots/iphone/light/diary.webp" alt="Дневник с календарём и историей тренировок" width="640" height="1387" fetchpriority="high" decoding="async"><span class="device-zoom" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#plus"/></svg></span></a></div>
+<div class="hero-device hero-device-right"><a class="device-phone " href="assets/screenshots/iphone/light/supplements.png" data-zoom aria-label="Увеличить: Дневник приёмов с расписанием на день"><img src="assets/screenshots/iphone/light/supplements.webp" alt="Дневник приёмов с расписанием на день" width="640" height="1387" fetchpriority="high" decoding="async"><span class="device-zoom" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#plus"/></svg></span></a></div>
+<div class="hero-side-note note-intakes"><span class="tiny-label">02 / ПРИЁМЫ</span><p>Забота о себе.<br>Часть твоего дня.</p></div>
+</div>
+<div class="hero-bottom wrap"><span>Два направления. Один твой ритм.</span><a href="#training" aria-label="Перейти к тренировкам">Листай, чтобы познакомиться <svg class="icon" aria-hidden="true"><use href="#down"/></svg></a></div>
+</section>
+<section class="manifesto wrap" aria-label="Идея Strongary"><p data-reveal>Не каждый день — новый рекорд.<br><span>Но каждый день — часть твоего пути.</span><br>Strongary помогает его увидеть.</p></section>
+<section class="training-section" id="training" aria-labelledby="training-title">
+<div class="section-heading wrap" data-reveal><p class="eyebrow"><span class="chapter-number">01</span> ТРЕНИРОВКИ</p><h2 id="training-title">Ты делаешь работу.<br><span>Он помнит каждый подход.</span></h2><p class="section-intro">От первого плана до нового личного рекорда.<br>Дневник, который всегда на твоей стороне.</p></div>
+<div class="story-grid wrap" data-story>
+<div class="story-steps"><article class="story-step" data-step="0" id="training-step-0"><div class="step-copy" data-reveal><span class="step-label">01 / Планируй</span><h3>Тренировка начинается<br>с ясного плана.</h3><p>Собери упражнения в шаблон и возвращайся к нему, когда придёшь в зал. Календарь и история помогут держать свой ритм.</p><span class="step-meta">Силовые · Кардио · Шаблоны</span></div><div class="mobile-device"><a class="device-phone " href="assets/screenshots/iphone/light/diary.png" data-zoom aria-label="Увеличить: Дневник с календарём и тренировками"><img src="assets/screenshots/iphone/light/diary.webp" alt="Дневник с календарём и тренировками" width="640" height="1387" loading="lazy" decoding="async"><span class="device-zoom" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#plus"/></svg></span></a></div></article><article class="story-step" data-step="1" id="training-step-1"><div class="step-copy" data-reveal><span class="step-label">02 / Тренируйся</span><h3>Будь в моменте.<br>Подход за подходом.</h3><p>Записывай вес и повторения, отмечай выполненные подходы. История упражнения рядом — ты знаешь, от чего оттолкнуться сегодня.</p><span class="step-meta">Упражнения · Подходы · Отдых</span></div><div class="mobile-device"><a class="device-phone " href="assets/screenshots/iphone/light/workout.png" data-zoom aria-label="Увеличить: Текущая тренировка с весом и повторениями"><img src="assets/screenshots/iphone/light/workout.webp" alt="Текущая тренировка с весом и повторениями" width="640" height="1387" loading="lazy" decoding="async"><span class="device-zoom" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#plus"/></svg></span></a></div></article><article class="story-step" data-step="2" id="training-step-2"><div class="step-copy" data-reveal><span class="step-label">03 / Замечай прогресс</span><h3>Ты растёшь.<br>И это видно.</h3><p>Одна тренировка — часть большой картины. Следи за динамикой рабочего веса, объёмом нагрузки и личными рекордами.</p><span class="step-meta">Динамика · Нагрузка · Рекорды</span></div><div class="mobile-device"><a class="device-phone " href="assets/screenshots/iphone/light/progress.png" data-zoom aria-label="Увеличить: Графики прогресса в упражнении"><img src="assets/screenshots/iphone/light/progress.webp" alt="Графики прогресса в упражнении" width="640" height="1387" loading="lazy" decoding="async"><span class="device-zoom" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#plus"/></svg></span></a></div></article></div><div class="story-visual"><div class="story-plate"><span class="plate-label">ТВОЙ ДНЕВНИК. ТВОЙ ПРОГРЕСС.</span><div class="story-phone-stack"><div class="story-screen is-active" data-screen="0"><a class="device-phone " href="assets/screenshots/iphone/light/diary.png" data-zoom aria-label="Увеличить: Дневник с календарём и тренировками"><img src="assets/screenshots/iphone/light/diary.webp" alt="Дневник с календарём и тренировками" width="640" height="1387" loading="lazy" decoding="async"><span class="device-zoom" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#plus"/></svg></span></a></div><div class="story-screen " data-screen="1" inert><a class="device-phone " href="assets/screenshots/iphone/light/workout.png" data-zoom aria-label="Увеличить: Текущая тренировка с весом и повторениями"><img src="assets/screenshots/iphone/light/workout.webp" alt="Текущая тренировка с весом и повторениями" width="640" height="1387" loading="lazy" decoding="async"><span class="device-zoom" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#plus"/></svg></span></a></div><div class="story-screen " data-screen="2" inert><a class="device-phone " href="assets/screenshots/iphone/light/progress.png" data-zoom aria-label="Увеличить: Графики прогресса в упражнении"><img src="assets/screenshots/iphone/light/progress.webp" alt="Графики прогресса в упражнении" width="640" height="1387" loading="lazy" decoding="async"><span class="device-zoom" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#plus"/></svg></span></a></div></div><div class="story-controls" aria-label="Этапы тренировки"><button type="button" data-step-button="0" aria-label="Планируй" aria-pressed="true"><span>01</span> Планируй</button><button type="button" data-step-button="1" aria-label="Тренируйся" aria-pressed="false"><span>02</span> Тренируйся</button><button type="button" data-step-button="2" aria-label="Замечай прогресс" aria-pressed="false"><span>03</span> Замечай прогресс</button></div></div></div></div></section><section class="results-section wrap" aria-labelledby="results-title">
+<div class="results-copy" data-reveal><p class="eyebrow">МОТИВАЦИЯ В ТВОИХ РЕЗУЛЬТАТАХ</p><h2 id="results-title">Оглянись.<br>Ты уже <span>дальше.</span></h2><p>Регулярность, нагрузка по мышцам, изменение веса. Когда видишь свой путь, легче сделать следующий шаг.</p><a class="text-link" href="assets/screenshots/iphone/light/results.png" data-zoom data-caption="Сводка результатов Strongary">Рассмотреть результаты <svg class="icon" aria-hidden="true"><use href="#plus"/></svg></a></div>
+<div class="results-visual" data-reveal><div class="results-orbit" aria-hidden="true"></div><div class="results-phone rear"><a class="device-phone " href="assets/screenshots/iphone/dark/muscle-balance.png" data-zoom aria-label="Увеличить: Баланс нагрузки по группам мышц"><img src="assets/screenshots/iphone/dark/muscle-balance.webp" alt="Баланс нагрузки по группам мышц" width="640" height="1387" loading="lazy" decoding="async"><span class="device-zoom" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#plus"/></svg></span></a></div><div class="results-phone front"><a class="device-phone " href="assets/screenshots/iphone/light/results.png" data-zoom aria-label="Увеличить: Результаты: регулярность, нагрузка, вес и пульс"><img src="assets/screenshots/iphone/light/results.webp" alt="Результаты: регулярность, нагрузка, вес и пульс" width="640" height="1387" loading="lazy" decoding="async"><span class="device-zoom" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#plus"/></svg></span></a></div></div>
+</section>
+<section class="intakes-section" id="intakes" aria-labelledby="intakes-title">
+<div class="wrap"><div class="intakes-heading" data-reveal><p class="eyebrow"><span class="chapter-number">02</span> ПРИЁМЫ</p><h2 id="intakes-title">Забота о себе.<br><span>В твоём расписании.</span></h2><p class="section-intro">Препараты, витамины и добавки.<br>Свой порядок — даже в насыщенный день.</p></div>
+<div class="intakes-stage" data-parallax>
+<div class="intake-caption caption-day" data-reveal><span class="tiny-label">ТВОЙ ДЕНЬ</span><p>Всё по порядку.<br>С утра до вечера.</p></div>
+<div class="intake-phone intake-phone-day"><a class="device-phone " href="assets/screenshots/iphone/light/supplements.png" data-zoom aria-label="Увеличить: Расписание приёмов: утро и вечер"><img src="assets/screenshots/iphone/light/supplements.webp" alt="Расписание приёмов: утро и вечер" width="640" height="1387" loading="lazy" decoding="async"><span class="device-zoom" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#plus"/></svg></span></a></div>
+<div class="intake-phone intake-phone-stats"><a class="device-phone " href="assets/screenshots/iphone/dark/supplement-stats.png" data-zoom aria-label="Увеличить: Статистика приёмов за неделю"><img src="assets/screenshots/iphone/dark/supplement-stats.webp" alt="Статистика приёмов за неделю" width="640" height="1387" loading="lazy" decoding="async"><span class="device-zoom" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#plus"/></svg></span></a></div>
+<div class="intake-caption caption-history" data-reveal><span class="tiny-label">ТВОЯ РЕГУЛЯРНОСТЬ</span><p>Маленькие отметки.<br>Целая история.</p></div>
+<div class="intakes-orbit" aria-hidden="true"></div>
+</div>
+<div class="intake-features"><article data-reveal><svg class="icon" aria-hidden="true"><use href="#calendar"/></svg><h3>Задай свой ритм.</h3><p>Составь расписание приёмов по времени. На сегодня — понятный список перед глазами.</p></article><article data-reveal><svg class="icon" aria-hidden="true"><use href="#bell"/></svg><h3>Вспомни вовремя.</h3><p>Напоминания помогают вернуться к плану. Отмечай приём на iPhone или Apple Watch.</p></article><article data-reveal><svg class="icon" aria-hidden="true"><use href="#chart"/></svg><h3>Видь всю картину.</h3><p>История и статистика показывают, как получается следовать выбранному расписанию.</p></article></div>
+</div></section>
+<section class="watch-section" id="watch" aria-labelledby="watch-title"><div class="watch-layout wrap">
+<div class="watch-copy" data-reveal><p class="eyebrow">STRONGARY НА APPLE WATCH</p><h2 id="watch-title">Рядом.<br>На запястье.</h2><p>Отметить подход. Проверить пульс.<br>Записать приём. Не отвлекаясь на телефон.</p><span class="watch-note">Тот же ритм. Ещё ближе.</span></div>
+<div class="watch-devices" data-reveal><figure><div class="watch-strap" aria-hidden="true"></div><a class="device-watch" href="assets/screenshots/watch/workout.png" data-zoom aria-label="Увеличить: Apple Watch: текущий подход и пульс"><img src="assets/screenshots/watch/workout.webp" alt="Apple Watch: текущий подход и пульс" width="410" height="502" loading="lazy" decoding="async"></a><figcaption>Тренируйся.</figcaption></figure><figure><div class="watch-strap" aria-hidden="true"></div><a class="device-watch" href="assets/screenshots/watch/supplements.png" data-zoom aria-label="Увеличить: Apple Watch: список приёмов и отметки"><img src="assets/screenshots/watch/supplements.webp" alt="Apple Watch: список приёмов и отметки" width="410" height="502" loading="lazy" decoding="async"></a><figcaption>Заботься о себе.</figcaption></figure></div>
+</div></section>
+<section class="details-section wrap" aria-labelledby="details-title"><div data-reveal><p class="eyebrow">ПАРА ДЕТАЛЕЙ</p><h2 id="details-title">Перед первым шагом.</h2></div>
+<div class="faq-list" data-reveal><details><summary>Как попробовать Strongary? <svg class="icon" aria-hidden="true"><use href="#plus"/></svg></summary><p>Мы готовимся к открытому тестированию. Когда оно начнётся, здесь появится ссылка для установки через TestFlight.</p></details><details><summary>Тренировки и приёмы обязательно вести вместе? <svg class="icon" aria-hidden="true"><use href="#plus"/></svg></summary><p>Выбирай то, что нужно тебе. Можно вести дневник тренировок, отмечать приёмы или использовать оба направления.</p></details><details><summary>Нужны ли Apple Watch? <svg class="icon" aria-hidden="true"><use href="#plus"/></svg></summary><p>Основной дневник работает на iPhone. Apple Watch дополняют его: можно отмечать подходы и приёмы прямо на запястье.</p></details><details><summary>Какая версия приложения на скриншотах? <svg class="icon" aria-hidden="true"><use href="#plus"/></svg></summary><p>Это реальные экраны Strongary на этапе разработки. Мы продолжаем улучшать приложение, поэтому к выпуску некоторые детали могут измениться.</p></details></div>
+</section>
+<section class="testflight-section" id="testflight" aria-labelledby="testflight-title"><div class="testflight-card wrap" data-reveal>
+<img class="testflight-icon" src="icon.webp" alt="" width="76" height="76" loading="lazy"><p class="eyebrow">ТВОЙ СЛЕДУЮЩИЙ ШАГ</p><h2 id="testflight-title">Начни свою<br>историю.</h2><p>Strongary для iPhone и Apple Watch.<br>Скоро — в открытом тестировании.</p>
+<div class="testflight-action"><a class="button button-light" data-testflight-link hidden>Присоединиться в TestFlight <span aria-hidden="true">↗</span></a><span class="testflight-pending" data-testflight-pending><span class="status-dot" aria-hidden="true"></span>TestFlight — скоро</span></div>
+<p class="testflight-note" data-testflight-note>Ссылка на установку появится здесь.</p>
+</div></section>
+</main><footer class="site-footer wrap"><a class="brand" href="/">Strongary</a><p>Твой ритм. Каждый день.</p><nav aria-label="Ссылки внизу страницы"><a href="support.html">Поддержка</a><a href="privacy.html">Конфиденциальность</a></nav><small>© 2026 Strongary</small></footer><dialog class="zoom-dialog" id="zoom-dialog" aria-label="Скриншот приложения"><div class="zoom-toolbar"><p id="zoom-caption"></p><button class="zoom-close" type="button" aria-label="Закрыть скриншот"><svg class="icon" aria-hidden="true"><use href="#close"/></svg></button></div><div class="zoom-image-wrap"><img id="zoom-image" alt=""></div></dialog></body></html>

@@ -2,7 +2,6 @@
   'use strict';
   const root = document.documentElement;
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
-  const desktop = matchMedia('(min-width: 901px)');
   const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
 
   // An unset invitation is a status, never a dead or fabricated download link.
@@ -23,7 +22,7 @@
         if (description) description.innerHTML = 'Strongary для iPhone и Apple Watch.<br>Присоединяйся к открытому тестированию.';
         document.querySelectorAll('.hero-actions a[href="#testflight"]').forEach(link => { link.innerHTML = 'Попробовать в TestFlight <span aria-hidden="true">↗</span>'; });
         const answer = document.querySelector('.faq-list details:first-child p');
-        if (answer) answer.textContent = 'Открытое тестирование уже доступно. Перейди к блоку TestFlight внизу страницы и открой ссылку на своём iPhone.';
+        if (answer) answer.textContent = 'Открытое тестирование уже доступно. Перейди к блоку TestFlight и открой ссылку на своём iPhone.';
       }
     } catch { /* Keep the pending state if configuration is invalid. */ }
   }
@@ -77,25 +76,6 @@
     });
   }
 
-  const story = document.querySelector('[data-story]');
-  const steps = [...document.querySelectorAll('[data-step]')];
-  const screens = [...document.querySelectorAll('[data-screen]')];
-  const stepButtons = [...document.querySelectorAll('[data-step-button]')];
-  let activeStep = -1;
-  function selectStep(index) {
-    if (index === activeStep) return;
-    activeStep = index;
-    screens.forEach((screen, i) => {
-      screen.classList.toggle('is-active', i === index);
-      screen.inert = i !== index;
-    });
-    stepButtons.forEach((button, i) => button.setAttribute('aria-pressed', String(i === index)));
-  }
-  stepButtons.forEach((button, index) => button.addEventListener('click', () => {
-    selectStep(index);
-    steps[index].scrollIntoView({ behavior: reducedMotion.matches ? 'instant' : 'smooth', block: 'center' });
-  }));
-
   const heroStage = document.querySelector('.hero-stage');
   const intakeStage = document.querySelector('[data-parallax]');
   const navSections = [...document.querySelectorAll('main > section[id]')];
@@ -116,13 +96,6 @@
         if (rect.bottom > 0 && rect.top < height) intakeStage.style.setProperty('--drift', clamp((height - rect.top) / (height + rect.height)));
       }
     }
-    if (story && desktop.matches) {
-      const rect = story.getBoundingClientRect();
-      if (rect.bottom > 0 && rect.top < height) {
-        const distances = steps.map(step => Math.abs(step.getBoundingClientRect().top + step.offsetHeight / 2 - height / 2));
-        selectStep(distances.indexOf(Math.min(...distances)));
-      }
-    }
     let current = '';
     navSections.forEach(section => { if (section.getBoundingClientRect().top <= height * .35) current = `#${section.id}`; });
     navLinks.forEach(link => {
@@ -138,7 +111,5 @@
   addEventListener('scroll', requestUpdate, { passive: true });
   addEventListener('resize', requestUpdate, { passive: true });
   addEventListener('pageshow', requestUpdate);
-  desktop.addEventListener('change', requestUpdate);
-  selectStep(0);
   updateScroll();
 })();

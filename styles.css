@@ -55,9 +55,9 @@ button, input { font: inherit; }
 .hero-stage { position: relative; height: 655px; margin-top: 66px; isolation: isolate; }
 .hero-halo { position: absolute; z-index: -1; width: 740px; height: 740px; left: 50%; top: 38px; transform: translateX(-50%); border: 1px solid #d9e1d2; border-radius: 50%; background: radial-gradient(circle at 50% 35%, #e8efdf 0, #edf1e5 28%, rgb(239 243 231 / 30%) 63%, transparent 70%); }
 .hero-halo::after { content: ""; position: absolute; inset: 42px; border-radius: 50%; border: 1px solid rgb(200 212 188 / 45%); }
-.device-phone { display: block; width: 100%; position: relative; padding: 7px; border: 1px solid #6b6c67; border-radius: 44px; background: #161714; box-shadow: 0 0 0 2px #c6c8c0, 0 0 0 3px #9b9c97, 0 18px 35px -8px rgb(29 38 22 / 21%), inset 0 0 0 1px #4f504b; isolation: isolate; }
-.device-phone img { border-radius: 36px; width: 100%; background: #eeede5; }
-.device-phone::after { content: ""; position: absolute; top: 15px; left: 35%; width: 30%; height: 24px; border-radius: 30px; background: #050505; pointer-events: none; }
+.device-phone { display: block; width: 100%; position: relative; aspect-ratio: 389 / 800; isolation: isolate; filter: drop-shadow(0 18px 20px rgb(29 38 22 / 18%)); }
+.device-phone img { position: absolute; left: 4.4%; top: 1.7%; width: 91.2%; height: 96.5%; object-fit: contain; background: #000; border-radius: 14% / 6.4%; }
+.device-phone::after { content: ""; position: absolute; inset: 0; background: url("assets/devices/iphone-17-pro-max.png") center / 100% 100% no-repeat; pointer-events: none; }
 .device-zoom { position: absolute; bottom: 25px; right: 20px; width: 33px; height: 33px; border-radius: 50%; display: grid; place-items: center; background: rgb(255 255 255 / 92%); color: #292e26; box-shadow: 0 2px 10px #0002; opacity: 0; transform: translateY(4px); transition: .25s; }
 .device-zoom .icon { width: 17px; height: 17px; }
 .device-phone:hover .device-zoom, .device-phone:focus-visible .device-zoom { opacity: 1; transform: none; }
@@ -65,9 +65,6 @@ button, input { font: inherit; }
 .hero-device-center { width: 280px; left: calc(50% - 140px); top: 0; z-index: 3; transform: translateY(calc(var(--hero-shift, 0) * -18px)); }
 .hero-device-left { width: 238px; left: calc(50% - 357px); top: 57px; z-index: 2; transform: translate(calc(var(--hero-shift, 0) * -30px), calc(var(--hero-shift, 0) * 16px)) rotate(-9deg); }
 .hero-device-right { width: 238px; right: calc(50% - 357px); top: 57px; z-index: 1; transform: translate(calc(var(--hero-shift, 0) * 30px), calc(var(--hero-shift, 0) * 16px)) rotate(9deg); }
-.hero-device-left .device-phone, .hero-device-right .device-phone { border-radius: 38px; }
-.hero-device-left .device-phone img, .hero-device-right .device-phone img { border-radius: 31px; }
-.hero-device-left .device-phone::after, .hero-device-right .device-phone::after { height: 20px; top: 13px; }
 .hero-side-note { position: absolute; top: 245px; }
 .tiny-label { display: block; color: var(--green); font-size: 9px; font-weight: 600; letter-spacing: .13em; }
 .hero-side-note p { color: #6f7869; font-size: 14px; line-height: 1.45; margin-top: 12px; }
@@ -96,7 +93,7 @@ h2 span { color: var(--green); }
 .story-visual { position: sticky; top: 100px; padding: 25px 0; width: 100%; }
 .story-plate { background: #eff1ea; border-radius: 28px; min-height: 670px; display: flex; align-items: center; flex-direction: column; justify-content: space-between; padding: 28px 20px 23px; }
 .plate-label { font-size: 9px; letter-spacing: .11em; color: #6b7562; font-weight: 600; margin-bottom: 26px; }
-.story-phone-stack { position: relative; width: min(255px, 67%); aspect-ratio: 640 / 1387; margin-bottom: 28px; }
+.story-phone-stack { position: relative; width: min(255px, 67%); aspect-ratio: 389 / 800; margin-bottom: 28px; }
 .story-screen { position: absolute; inset: 0; opacity: 0; visibility: hidden; transform: translateY(15px) scale(.97); transition: opacity .55s ease, transform .7s var(--ease), visibility .55s; }
 .story-screen.is-active { opacity: 1; visibility: visible; transform: none; }
 .story-controls { display: flex; gap: 7px; justify-content: center; width: 100%; }
@@ -138,16 +135,14 @@ h2 span { color: var(--green); }
 .watch-copy h2 { font-size: clamp(50px, 5.5vw, 76px); margin-top: 28px; }
 .watch-copy > p:not(.eyebrow) { color: #b0b8a9; font-size: 17px; line-height: 1.7; margin-top: 28px; }
 .watch-note { display: block; color: #c3cfb7; font-size: 12px; margin-top: 35px; }
-.watch-devices { display: flex; gap: 32px; align-items: center; justify-content: center; padding-block: 50px; }
-.watch-devices figure { position: relative; width: 230px; padding-block: 35px; isolation: isolate; }
+.watch-devices { display: flex; gap: 20px; align-items: center; justify-content: center; padding-block: 50px; }
+.watch-devices figure { position: relative; width: 270px; padding-block: 0; isolation: isolate; }
 .watch-devices figure:first-child { transform: translateY(-28px) rotate(-7deg); }
 .watch-devices figure:last-child { transform: translateY(44px) rotate(7deg); }
-.device-watch { display: block; position: relative; background: linear-gradient(120deg,#8a8c80,#333830 15%,#92968c 20%,#393e35 25%,#151a13 60%,#7b8074 88%,#30362b); padding: 15px; border: 1px solid #88917e; border-radius: 57px; box-shadow: 0 15px 35px #0004, inset 0 0 0 2px #30362b; }
-.device-watch::before { content: ""; position: absolute; right: -7px; top: 64px; width: 8px; height: 35px; background: repeating-linear-gradient(0deg,#727969 0 2px,#b2b6a9 2px 3px); border-radius: 4px; }
-.device-watch::after { content: ""; position: absolute; left: -4px; top: 110px; width: 4px; height: 37px; background: #ba7238; border-radius: 3px; }
-.device-watch img { width: 100%; border: 4px solid #090a09; border-radius: 42px; }
-.watch-strap { position: absolute; inset: -20px 33px 25px; z-index: -1; background: repeating-linear-gradient(0deg,#737c66 0 3px,#5e6854 3px 4px); border: 1px solid #7b856f; border-radius: 34px; }
-.watch-devices figure:last-child .watch-strap { background: repeating-linear-gradient(0deg,#c6c3b2 0 3px,#b6b4a3 3px 4px); border-color: #d0cdbc; }
+.device-watch { display: block; position: relative; width: 100%; aspect-ratio: 600 / 960; isolation: isolate; filter: drop-shadow(0 16px 18px rgb(0 0 0 / 25%)); }
+
+.device-watch::after { content: ""; position: absolute; inset: 0; background: url("assets/devices/apple-watch-ultra-3-black.webp") center / 100% 100% no-repeat; pointer-events: none; }
+.device-watch img { position: absolute; left: 14.667%; top: 23.125%; width: 70.667%; height: 53.75%; object-fit: contain; background: #000; border-radius: 26% / 21%; }
 .watch-devices figcaption { position: absolute; top: calc(100% + 20px); width: 100%; text-align: center; color: #aab59f; font-size: 12px; }
 .details-section { display: grid; grid-template-columns: .85fr 1.15fr; gap: 75px; padding-block: 120px; }
 .details-section h2 { font-size: 40px; margin-top: 25px; max-width: 330px; }
@@ -222,9 +217,7 @@ h2 span { color: var(--green); }
   .results-phone.rear { width: 210px; right: 0; }
   .results-visual { height: 560px; }
   .watch-devices { gap: 25px; }
-  .watch-devices figure { width: 200px; }
-  .device-watch { padding: 12px; border-radius: 47px; }
-  .device-watch img { border-radius: 35px; }
+  .watch-devices figure { width: 235px; }
 }
 @media (max-width: 900px) {
   .wrap { width: calc(100% - 56px); }
@@ -255,8 +248,8 @@ h2 span { color: var(--green); }
   .intake-features { gap: 30px; }
   .intake-features h3 { font-size: 20px; }
   .watch-layout { grid-template-columns: 1fr; padding-block: 80px 110px; text-align: center; }
-  .watch-devices { max-width: 550px; margin-inline: auto; gap: 65px; }
-  .watch-devices figure { width: 230px; }
+  .watch-devices { max-width: 580px; margin-inline: auto; gap: 40px; }
+  .watch-devices figure { width: 250px; }
   .watch-copy h2 br { display: none; }
   .watch-note { margin-top: 20px; }
   .details-section { gap: 50px; padding-block: 85px; }
@@ -284,12 +277,6 @@ h2 span { color: var(--green); }
   .hero-device-center { width: 186px; left: calc(50% - 93px); }
   .hero-device-left { width: 158px; left: calc(50% - 216px); top: 49px; }
   .hero-device-right { width: 158px; right: calc(50% - 216px); top: 49px; }
-  .hero-device .device-phone { padding: 4px; border-radius: 29px; box-shadow: 0 0 0 1px #c6c8c0, 0 0 0 2px #9b9c97, 0 14px 30px -8px #1d26163b; }
-  .hero-device .device-phone img { border-radius: 24px; }
-  .hero-device .device-phone::after { height: 16px; top: 9px; }
-  .hero-device-left .device-phone, .hero-device-right .device-phone { border-radius: 24px; }
-  .hero-device-left .device-phone img, .hero-device-right .device-phone img { border-radius: 20px; }
-  .hero-device-left .device-phone::after, .hero-device-right .device-phone::after { height: 13px; top: 8px; }
   .hero-halo { width: 510px; height: 510px; top: 0; }
   .hero-bottom { justify-content: center; padding-bottom: 20px; font-size: 10px; }
   .hero-bottom > a { display: none; }
@@ -317,9 +304,6 @@ h2 span { color: var(--green); }
   .results-visual { width: 100%; height: 465px; max-width: 420px; }
   .results-phone.front { width: 195px; left: 5%; top: 0; }
   .results-phone.rear { width: 170px; right: 5%; top: 45px; }
-  .results-phone .device-phone { border-radius: 30px; padding: 5px; }
-  .results-phone .device-phone img { border-radius: 24px; }
-  .results-phone .device-phone::after { height: 16px; top: 10px; }
   .results-orbit { width: min(340px, 100%); height: auto; aspect-ratio: 1; top: 45px; }
   .intakes-section { padding-block: 65px 60px; }
   .intakes-heading h2 { font-size: clamp(38px, 9.2vw, 52px); }
@@ -328,9 +312,6 @@ h2 span { color: var(--green); }
   .intake-phone { width: 194px; }
   .intake-phone-day { left: calc(50% - 172px); }
   .intake-phone-stats { right: calc(50% - 172px); top: 55px; }
-  .intake-phone .device-phone { padding: 5px; border-radius: 32px; }
-  .intake-phone .device-phone img { border-radius: 26px; }
-  .intake-phone .device-phone::after { height: 16px; top: 11px; }
   .intakes-orbit { width: 500px; height: 500px; top: -5px; }
   .intake-features { grid-template-columns: 1fr; gap: 28px; padding-top: 35px; }
   .intake-features article { display: grid; grid-template-columns: 34px 1fr; column-gap: 18px; }
@@ -342,14 +323,9 @@ h2 span { color: var(--green); }
   .watch-copy h2 br { display: initial; }
   .watch-copy > p:not(.eyebrow) { font-size: 15px; margin-top: 21px; }
   .watch-devices { gap: 25px; width: 100%; padding-block: 35px; }
-  .watch-devices figure { width: min(42vw, 180px); padding-block: 25px; }
+  .watch-devices figure { width: min(43vw, 190px); padding-block: 0; }
   .watch-devices figure:first-child { transform: translateY(-10px) rotate(-7deg); }
   .watch-devices figure:last-child { transform: translateY(30px) rotate(7deg); }
-  .watch-strap { inset: -15px 25px 17px; border-radius: 25px; }
-  .device-watch { border-radius: 38px; padding: 9px; }
-  .device-watch img { border-radius: 29px; border-width: 3px; }
-  .device-watch::before { top: 45px; height: 26px; width: 6px; right: -5px; }
-  .device-watch::after { top: 80px; height: 26px; }
   .watch-devices figcaption { font-size: 10px; top: calc(100% + 12px); }
   .details-section { grid-template-columns: 1fr; gap: 28px; padding-block: 65px; }
   .details-section h2 { font-size: 34px; max-width: none; margin-top: 18px; }

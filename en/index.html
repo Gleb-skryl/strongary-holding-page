@@ -23,7 +23,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <script src="/preferences.js?v=20261017-5"></script>
-<link rel="stylesheet" href="/styles.css?v=20261017-5">
+<link rel="stylesheet" href="/styles.css?v=20261017-6">
 <script src="/site-config.js?v=20261017-1" defer></script>
 <script src="/site.js?v=20261017-5" defer></script>
 <script src="/analytics.js" defer></script>
@@ -35,7 +35,6 @@
 <symbol id="check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
 <symbol id="chart" viewBox="0 0 24 24"><path d="M4 4v16h16M8 14l4-4 4 2 5-7"/></symbol>
 <symbol id="bell" viewBox="0 0 24 24"><path d="M8 19a4 4 0 0 0 8 0M4 18h16l-2-4V9A6 6 0 0 0 6 9v5Z"/></symbol>
-<symbol id="watch-icon" viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="5"/><path d="m8 5 1-4h6l1 4M8 19l1 4h6l1-4m3-10h2v4h-2M9 12l2 2 4-4"/></symbol>
 <symbol id="dumbbell-art" viewBox="0 0 48 48"><g transform="rotate(-32 24 24)" fill="currentColor"><rect x="2" y="21" width="44" height="6" rx="3"/><rect x="5" y="14" width="6" height="20" rx="2.5"/><rect x="11" y="8" width="8" height="32" rx="3"/><rect x="29" y="8" width="8" height="32" rx="3"/><rect x="37" y="14" width="6" height="20" rx="2.5"/></g></symbol>
 <symbol id="capsules-art" viewBox="0 0 48 48"><g transform="rotate(35 24 24)"><rect x="13" y="3" width="22" height="42" rx="11" fill="none" stroke="currentColor" stroke-width="3"/><path d="M13 24h22v10a11 11 0 0 1-22 0Z" fill="currentColor"/><path d="M13 24h22" fill="none" stroke="currentColor" stroke-width="3"/></g></symbol>
 <symbol id="theme-mixed" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16Z" fill="currentColor" stroke="none"/></symbol>
@@ -44,7 +43,7 @@
 </svg><a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header"><div class="wrap header-inner">
 <a class="brand" href="/en/" aria-label="Strongary — home"><img src="/icon.webp" width="38" height="38" alt=""><span class="brand-copy"><strong>Strongary</strong><small>for iPhone and Apple Watch</small></span></a>
-<nav class="main-nav" aria-label="Main navigation"><a href="#training"><svg class="nav-icon" aria-hidden="true"><use href="#dumbbell-art"/></svg><span>Workouts</span></a><a href="#intakes"><svg class="nav-icon" aria-hidden="true"><use href="#capsules-art"/></svg><span>Intakes</span></a><a href="#watch"><svg class="icon nav-icon" aria-hidden="true"><use href="#watch-icon"/></svg><span>Apple Watch</span></a></nav>
+<nav class="main-nav" aria-label="Main navigation"><a href="#training"><span>Workouts</span></a><a href="#intakes"><span>Intakes</span></a><a href="#watch"><span>Apple Watch</span></a></nav>
 <div class="header-preferences">
 <details class="theme-picker"><summary aria-label="Site theme" title="Site theme"><svg class="icon" aria-hidden="true"><use data-theme-icon href="#theme-mixed"/></svg><span class="theme-label">Theme</span><span class="picker-chevron" aria-hidden="true"></span></summary><div class="theme-menu" role="group" aria-label="Site and screenshot appearance"><p>Theme</p><button type="button" data-theme-choice="mixed" aria-pressed="true"><svg class="icon" aria-hidden="true"><use href="#theme-mixed"/></svg><span>Light & dark</span><svg class="icon theme-check" aria-hidden="true"><use href="#check"/></svg></button><button type="button" data-theme-choice="light" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#theme-light"/></svg><span>Light</span><svg class="icon theme-check" aria-hidden="true"><use href="#check"/></svg></button><button type="button" data-theme-choice="dark" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#theme-dark"/></svg><span>Dark</span><svg class="icon theme-check" aria-hidden="true"><use href="#check"/></svg></button></div></details>
 <div class="language-picker" role="group" aria-label="Site language"><a data-language="ru" href="/" lang="ru" aria-label="Russian">RU</a><a data-language="en" href="/en/" lang="en" aria-label="English" aria-current="true">EN</a></div>
@@ -56,12 +55,12 @@
 <p class="hero-description hero-entry">Train. Take care of yourself. See your progress.<br class="desktop-break"> Your workouts and intakes, always close at hand.</p>
 <div class="hero-actions hero-entry"><a class="button button-dark" href="#training">Take a closer look <svg class="icon" aria-hidden="true"><use href="#down"/></svg></a><a class="text-link" href="#testflight">Coming to TestFlight <span aria-hidden="true">↗</span></a></div>
 </div>
-<div class="hero-directions wrap"><p>Two sides. One rhythm.</p><div class="direction-labels"><a href="#training"><svg aria-hidden="true"><use href="#dumbbell-art"/></svg><span>Workouts</span></a><a href="#intakes"><svg aria-hidden="true"><use href="#capsules-art"/></svg><span>Intakes</span></a></div></div>
+<div class="hero-directions wrap"><p>Two sides. One rhythm.</p></div>
 <div class="hero-stage wrap" aria-label="Strongary screens: workout, diary and intakes">
 <div class="hero-halo" aria-hidden="true"></div>
-<div class="hero-device hero-device-left"><a class="device-phone " href="/assets/screenshots/iphone/light/diary.png" data-zoom aria-label="Enlarge: Workout diary with calendar and history"><img src="/assets/screenshots/iphone/light/diary.webp" data-screen="diary" data-mixed="light" alt="Workout diary with calendar and history" width="640" height="1387" fetchpriority="high" decoding="async"></a></div>
+<div class="hero-device hero-device-left"><a class="hero-device-label" href="#training">Workouts</a><a class="device-phone " href="/assets/screenshots/iphone/light/diary.png" data-zoom aria-label="Enlarge: Workout diary with calendar and history"><img src="/assets/screenshots/iphone/light/diary.webp" data-screen="diary" data-mixed="light" alt="Workout diary with calendar and history" width="640" height="1387" fetchpriority="high" decoding="async"></a></div>
 <div class="hero-device hero-device-center"><a class="device-phone " href="/assets/screenshots/iphone/dark/workout.png" data-zoom aria-label="Enlarge: Workout: exercises, weight and reps"><img src="/assets/screenshots/iphone/dark/workout.webp" data-screen="workout" data-mixed="dark" alt="Workout: exercises, weight and reps" width="640" height="1387" fetchpriority="high" decoding="async"></a></div>
-<div class="hero-device hero-device-right"><a class="device-phone " href="/assets/screenshots/iphone/light/supplements.png" data-zoom aria-label="Enlarge: Intake diary with a daily schedule"><img src="/assets/screenshots/iphone/light/supplements.webp" data-screen="supplements" data-mixed="light" alt="Intake diary with a daily schedule" width="640" height="1387" fetchpriority="high" decoding="async"></a></div>
+<div class="hero-device hero-device-right"><a class="hero-device-label" href="#intakes">Intakes</a><a class="device-phone " href="/assets/screenshots/iphone/light/supplements.png" data-zoom aria-label="Enlarge: Intake diary with a daily schedule"><img src="/assets/screenshots/iphone/light/supplements.webp" data-screen="supplements" data-mixed="light" alt="Intake diary with a daily schedule" width="640" height="1387" fetchpriority="high" decoding="async"></a></div>
 </div>
 </section>
 <section class="manifesto wrap" aria-label="The idea behind Strongary"><p data-reveal>Not every day brings a new record.<br><span>But every day is part of your journey.</span><br>Strongary helps you see it.</p></section>

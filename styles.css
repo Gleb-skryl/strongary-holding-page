@@ -26,11 +26,11 @@ button, input { font: inherit; }
 .svg-library { width: 0; height: 0; position: absolute; overflow: hidden; }
 .skip-link { color: #222820; position: fixed; z-index: 100; top: 12px; left: 16px; padding: 12px 20px; background: white; border-radius: 12px; transform: translateY(-180%); }
 .skip-link:focus { transform: none; }
-.reading-progress { position: absolute; left: 0; bottom: -1px; width: 100%; height: 2px; background: #5b8150; transform-origin: left; transform: scaleX(var(--read, 0)); }
+.reading-progress { position: absolute; left: 0; bottom: -1px; width: 100%; height: 2px; background: #5b8150; transform-origin: left; transform: scaleX(0); }
 .eyebrow { font-size: 11px; letter-spacing: .14em; font-weight: 650; line-height: 1.5; color: var(--green); }
 .hero { overflow: clip; }
 .hero-copy { text-align: center; padding-top: 44px; position: relative; z-index: 3; }
-.hero h1 { font-size: clamp(64px, 7.2vw, 100px); font-weight: 630; letter-spacing: -.067em; line-height: .99; margin: 0 0 24px; }
+.hero h1 { font-size: clamp(52px, 6.4vw, 90px); font-weight: 630; letter-spacing: -.06em; line-height: 1.05; text-wrap: balance; margin: 0 0 24px; }
 .hero h1 span { color: var(--green); }
 .hero-description { font-size: 18px; line-height: 1.55; color: var(--muted); letter-spacing: -.3px; }
 .hero-actions { display: flex; gap: 30px; justify-content: center; align-items: center; margin-top: 28px; }
@@ -43,19 +43,20 @@ button, input { font: inherit; }
 .text-link { display: inline-flex; align-items: center; gap: 12px; font-size: 14px; font-weight: 500; padding-block: 12px; }
 .text-link:hover { color: var(--green); }
 .text-link .icon { width: 19px; height: 19px; }
-.hero-stage { position: relative; height: 625px; margin-top: 24px; isolation: isolate; }
+.hero-stage { --hero-spread: 30px; --hero-lift: -18px; --hero-drop: 16px; --hero-angle: 9deg; position: relative; height: 625px; margin-top: 24px; isolation: isolate; }
 .hero-halo { position: absolute; z-index: -1; width: 740px; height: 740px; left: 50%; top: 38px; transform: translateX(-50%); border: 1px solid var(--line); border-radius: 50%; background: radial-gradient(circle at 50% 35%, var(--halo-center), transparent 70%); }
 .hero-halo::after { content: ""; position: absolute; inset: 42px; border-radius: 50%; border: 1px solid var(--line); }
 .device-phone { display: block; width: 100%; position: relative; aspect-ratio: 389 / 800; isolation: isolate; filter: drop-shadow(0 18px 20px rgb(29 38 22 / 18%)); }
 .device-phone img { position: absolute; left: 4.4%; top: 1.7%; width: 91.2%; height: 96.5%; object-fit: contain; background: #000; border-radius: 14% / 6.4%; }
 .device-phone::after { content: ""; position: absolute; inset: 0; background: url("assets/devices/iphone-17-pro-max.png") center / 100% 100% no-repeat; pointer-events: none; }
-.hero-device { position: absolute; will-change: transform; }
+.hero-device { position: absolute; will-change: transform; transform: translate3d(calc(var(--hero-shift, 0) * var(--device-x)), calc(var(--hero-shift, 0) * var(--device-y)), 0) rotate(var(--device-angle)); }
+.hero-device .device-phone { filter: none; border-radius: 16% / 7%; box-shadow: 0 12px 22px rgb(29 38 22 / 15%); }
 /* Labels share their phone's transform, so the angle and spacing stay together on scroll. */
 .hero-device-label { position: absolute; left: 0; bottom: calc(100% + 16px); width: 100%; text-align: center; font-size: 20px; line-height: 1.35; font-weight: 550; letter-spacing: -.5px; white-space: nowrap; }
 .hero-device-label:hover { color: var(--green); }
-.hero-device-center { width: 280px; left: calc(50% - 140px); top: 0; z-index: 3; transform: translateY(calc(var(--hero-shift, 0) * -18px)); }
-.hero-device-left { width: 238px; left: calc(50% - 357px); top: 57px; z-index: 2; transform: translate(calc(var(--hero-shift, 0) * -30px), calc(var(--hero-shift, 0) * 16px)) rotate(-9deg); }
-.hero-device-right { width: 238px; right: calc(50% - 357px); top: 57px; z-index: 1; transform: translate(calc(var(--hero-shift, 0) * 30px), calc(var(--hero-shift, 0) * 16px)) rotate(9deg); }
+.hero-device-center { --device-x: 0px; --device-y: var(--hero-lift); --device-angle: 0deg; width: 280px; left: calc(50% - 140px); top: 0; z-index: 3; }
+.hero-device-left { --device-x: calc(0px - var(--hero-spread)); --device-y: var(--hero-drop); --device-angle: calc(0deg - var(--hero-angle)); width: 238px; left: calc(50% - 357px); top: 57px; z-index: 2; }
+.hero-device-right { --device-x: var(--hero-spread); --device-y: var(--hero-drop); --device-angle: var(--hero-angle); width: 238px; right: calc(50% - 357px); top: 57px; z-index: 1; }
 .tiny-label { display: block; color: var(--green); font-size: 9px; font-weight: 600; letter-spacing: .13em; }
 .manifesto { max-width: 830px; padding: 82px 0 92px; text-align: center; }
 .manifesto p { font-size: clamp(24px, 2.7vw, 35px); font-weight: 550; letter-spacing: -.045em; line-height: 1.35; }
@@ -168,6 +169,34 @@ h2 span { color: var(--green); }
 .hero-entry:nth-child(2) { animation-delay: .08s; }
 .hero-entry:nth-child(3) { animation-delay: .16s; }
 .hero-entry:nth-child(4) { animation-delay: .24s; }
+
+/* The browser owns scroll motion; JavaScript is only a fallback for older engines. */
+@supports (animation-timeline: view()) and (view-timeline-name: --hero-motion) {
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-stage { view-timeline: --hero-motion block; view-timeline-inset: 0; }
+    .hero-device { animation: hero-spread linear both; animation-timeline: --hero-motion; }
+    .intakes-stage { view-timeline: --intake-motion block; view-timeline-inset: 0; }
+    .intake-phone-day { animation: intake-day-drift linear both; animation-timeline: --intake-motion; }
+    .intake-phone-stats { animation: intake-stats-drift linear both; animation-timeline: --intake-motion; }
+    .reading-progress { animation: reading-progress linear both; animation-timeline: scroll(root block); }
+  }
+}
+@keyframes hero-spread {
+  from { transform: translate3d(0, 0, 0) rotate(var(--device-angle)); }
+  to { transform: translate3d(var(--device-x), var(--device-y), 0) rotate(var(--device-angle)); }
+}
+@keyframes intake-day-drift {
+  from { transform: translate3d(0, 0, 0) rotate(-7deg); }
+  to { transform: translate3d(0, -28px, 0) rotate(-7deg); }
+}
+@keyframes intake-stats-drift {
+  from { transform: translate3d(0, 0, 0) rotate(8deg); }
+  to { transform: translate3d(0, 28px, 0) rotate(8deg); }
+}
+@keyframes reading-progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
 @media (max-width: 1150px) {
   .training-grid { gap: 28px; }
   .step-copy h3 { min-height: 3.39em; }
@@ -187,10 +216,11 @@ h2 span { color: var(--green); }
 }
 @media (max-width: 900px) {
   .wrap { width: calc(100% - 56px); }
-  .hero-stage { height: 615px; }
-  .hero-device-center { width: 260px; left: calc(50% - 130px); }
-  .hero-device-left { width: 220px; left: calc(50% - 325px); }
-  .hero-device-right { width: 220px; right: calc(50% - 325px); }
+  .hero-stage { --hero-spread: 16px; --hero-angle: 6deg; width: calc(100% - 32px); max-width: 700px; height: auto; aspect-ratio: 1.17; margin-top: 32px; }
+  .hero-device-center { width: 36%; left: 32%; }
+  .hero-device-left { width: 30%; left: 5%; top: 8%; }
+  .hero-device-right { width: 30%; right: 5%; top: 8%; }
+  .hero-device-label { font-size: 18px; }
   .manifesto { padding-block: 90px; }
   .training-section { padding-block: 80px; }
   .section-heading { margin-bottom: 60px; }
@@ -204,7 +234,7 @@ h2 span { color: var(--green); }
   .results-phone.front { width: 210px; }
   .results-phone.rear { width: 185px; }
   .results-visual { height: 500px; }
-  .results-orbit { width: 400px; height: 400px; }
+  .results-orbit { width: min(400px, 100%); height: auto; aspect-ratio: 1; }
   .intakes-section { padding-block: 80px; }
   .intake-caption { display: none; }
   .intake-features { gap: 30px; }
@@ -221,20 +251,16 @@ h2 span { color: var(--green); }
   .wrap { width: calc(100% - 40px); }
   .hero-copy { padding-top: 47px; }
   .eyebrow { font-size: 9px; letter-spacing: .12em; }
-  .hero h1 { font-size: clamp(52px, 12vw, 73px); letter-spacing: -.065em; margin-block: 0 23px; }
+  .hero h1 { font-size: clamp(27px, 8.4vw, 50px); letter-spacing: -.055em; margin-block: 0 23px; }
   .hero-description { font-size: 15px; line-height: 1.6; max-width: 310px; margin-inline: auto; }
   .desktop-break { display: none; }
   .hero-actions { flex-direction: column; gap: 7px; margin-top: 23px; }
   .button { font-size: 13px; padding: 13px 23px; }
   .text-link { font-size: 12px; }
-  .hero-stage { margin-top: 24px; height: 415px; width: 100%; }
-  .hero-device-center { width: 186px; left: calc(50% - 93px); }
-  .hero-device-left { width: 158px; left: calc(50% - 216px); top: 49px; }
-  .hero-device-right { width: 158px; right: calc(50% - 216px); top: 49px; }
-  .hero-device-label { font-size: 14px; bottom: calc(100% + 44px); letter-spacing: -.2px; }
-  .hero-device-left .hero-device-label { left: 30%; }
-  .hero-device-right .hero-device-label { left: -30%; }
-  .hero-halo { width: 510px; height: 510px; top: 0; }
+  .hero-stage { --hero-spread: 10px; --hero-lift: -8px; --hero-drop: 6px; max-width: 480px; }
+  .hero-device-label { font-size: clamp(12px, 3.3vw, 16px); bottom: calc(100% + 14px); letter-spacing: -.2px; }
+  .hero-device .device-phone { box-shadow: 0 8px 14px rgb(29 38 22 / 13%); }
+  .hero-halo { width: 100%; height: auto; aspect-ratio: 1; top: -12px; }
   .manifesto { padding-block: 65px 72px; }
   .manifesto p { font-size: 23px; letter-spacing: -.045em; }
   .training-section { padding-block: 62px; }
@@ -294,9 +320,6 @@ h2 span { color: var(--green); }
   .document h2 { font-size: 23px; }
 }
 @media (max-width: 360px) {
-  .hero h1 { font-size: 52px; }
-  .hero-device-left .hero-device-label { left: 48%; }
-  .hero-device-right .hero-device-label { left: -48%; }
   .hero-description { font-size: 14px; }
   .manifesto p { font-size: 20px; }
   .intake-phone { width: 175px; }
@@ -310,9 +333,7 @@ h2 span { color: var(--green); }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   [data-reveal].will-reveal { opacity: 1; transform: none; }
-  .hero-device-center { transform: none; }
-  .hero-device-left { transform: rotate(-9deg); }
-  .hero-device-right { transform: rotate(9deg); }
+  .hero-device { transform: rotate(var(--device-angle)); will-change: auto; }
   .intake-phone-day { transform: rotate(-7deg); }
   .intake-phone-stats { transform: rotate(8deg); }
 }
@@ -416,7 +437,6 @@ h2 span { color: var(--green); }
   .main-nav { gap: 10px; font-size: 10.5px; }
   .main-nav a { gap: 4px; }
   .nav-cta { font-size: 10px; gap: 7px; padding: 8px 11px; }
-  .hero h1 { font-size: clamp(47px, 11.9vw, 71px); }
   .hero-directions { margin-top: 33px; }
   .hero-directions > p { font-size: 12px; }
   .chapter-label { font-size: 24px; }

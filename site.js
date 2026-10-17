@@ -124,38 +124,70 @@
 
   const heroStage = document.querySelector('.hero-stage');
   const intakeStage = document.querySelector('[data-parallax]');
+  const progressBar = document.querySelector('.reading-progress');
+  const nativeScrollMotion = CSS.supports('animation-timeline: view()') && CSS.supports('view-timeline-name: --hero-motion');
   const navSections = [...document.querySelectorAll('main > section[id]')];
   const navLinks = [...document.querySelectorAll('.main-nav a')];
   let scheduled = false;
+  let layoutDirty = true;
+  let height = 0;
+  let pageHeight = 0;
+  let sceneBounds = [];
+  let sectionBounds = [];
+  let currentSection = null;
+  function measureLayout() {
+    // Read layout together, only after content or viewport geometry changes.
+    const y = scrollY;
+    height = innerHeight;
+    pageHeight = root.scrollHeight - height;
+    sceneBounds = nativeScrollMotion ? [] : [[heroStage, '--hero-shift'], [intakeStage, '--drift']]
+      .filter(([node]) => node)
+      .map(([node, property]) => {
+        const rect = node.getBoundingClientRect();
+        return { node, property, top: rect.top + y, height: rect.height };
+      });
+    sectionBounds = navSections.map(section => ({ hash: `#${section.id}`, top: section.getBoundingClientRect().top + y }));
+    layoutDirty = false;
+  }
   function updateScroll() {
     scheduled = false;
-    const height = innerHeight;
-    const pageHeight = root.scrollHeight - height;
-    root.style.setProperty('--read', pageHeight > 0 ? clamp(scrollY / pageHeight) : 0);
-    if (!reducedMotion.matches) {
-      if (heroStage) {
-        const rect = heroStage.getBoundingClientRect();
-        if (rect.bottom > 0 && rect.top < height) heroStage.style.setProperty('--hero-shift', clamp((height - rect.top) / (height + rect.height)));
-      }
-      if (intakeStage) {
-        const rect = intakeStage.getBoundingClientRect();
-        if (rect.bottom > 0 && rect.top < height) intakeStage.style.setProperty('--drift', clamp((height - rect.top) / (height + rect.height)));
-      }
+    if (layoutDirty) measureLayout();
+    const y = scrollY;
+    if (progressBar && (!nativeScrollMotion || reducedMotion.matches)) {
+      progressBar.style.transform = `scaleX(${pageHeight > 0 ? clamp(y / pageHeight) : 0})`;
+    }
+    if (!nativeScrollMotion && !reducedMotion.matches) {
+      sceneBounds.forEach(scene => {
+        const top = scene.top - y;
+        if (top + scene.height > 0 && top < height) {
+          scene.node.style.setProperty(scene.property, clamp((height - top) / (height + scene.height)));
+        }
+      });
     }
     let current = '';
-    navSections.forEach(section => { if (section.getBoundingClientRect().top <= height * .35) current = `#${section.id}`; });
-    navLinks.forEach(link => {
-      if (link.hash === current) link.setAttribute('aria-current', 'location');
-      else link.removeAttribute('aria-current');
-    });
+    sectionBounds.forEach(section => { if (section.top <= y + height * .35) current = section.hash; });
+    if (current !== currentSection) {
+      navLinks.forEach(link => {
+        if (link.hash === current) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
+      currentSection = current;
+    }
   }
   function requestUpdate() {
     if (scheduled) return;
     scheduled = true;
     requestAnimationFrame(updateScroll);
   }
+  function invalidateLayout() {
+    layoutDirty = true;
+    requestUpdate();
+  }
   addEventListener('scroll', requestUpdate, { passive: true });
-  addEventListener('resize', requestUpdate, { passive: true });
-  addEventListener('pageshow', requestUpdate);
+  addEventListener('resize', invalidateLayout, { passive: true });
+  addEventListener('pageshow', invalidateLayout);
+  reducedMotion.addEventListener('change', requestUpdate);
+  if ('ResizeObserver' in window) new ResizeObserver(invalidateLayout).observe(document.body);
+  document.fonts?.ready.then(invalidateLayout);
   updateScroll();
 })();

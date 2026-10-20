@@ -100,14 +100,14 @@
           link.target = '_blank';
         });
         document.querySelectorAll('[data-testflight-pending]').forEach(node => { node.hidden = true; });
-        document.querySelectorAll('[data-testflight-note]').forEach(node => { node.textContent = english ? 'Open the link on your iPhone and follow the TestFlight instructions.' : 'Открой ссылку на iPhone и следуй инструкциям TestFlight.'; });
+        document.querySelectorAll('[data-testflight-note]').forEach(node => { node.textContent = english ? 'This link opens beta installation through TestFlight on your iPhone.' : 'Ссылка откроет установку бета-версии через TestFlight на iPhone.'; });
         document.querySelectorAll('[data-release-status]').forEach(node => {
-          node.textContent = english ? 'Public beta available on TestFlight' : 'Открытое тестирование доступно в TestFlight';
+          node.textContent = english ? 'The free iPhone beta is available' : 'Бесплатная бета-версия для iPhone уже доступна';
         });
         document.querySelectorAll('[data-release-faq]').forEach(node => {
           node.textContent = english
-            ? 'The public beta is available through TestFlight. Use the invitation below. You’ll need an iPhone with iOS 18.6 or later; the watch app requires watchOS 11 or later.'
-            : 'Открытое тестирование доступно через TestFlight. Ссылка на приглашение — ниже. Понадобится iPhone с iOS 18.6 или новее; для приложения на часах — watchOS 11 или новее.';
+            ? 'You’ll need TestFlight, Apple’s app for installing beta versions. The Strongary link is at the bottom of this page. You’ll need an iPhone with iOS 18.6 or later; the watch app requires watchOS 11 or later.'
+            : 'Для установки понадобится TestFlight — приложение Apple для бета-версий. Ссылка на Strongary — внизу этой страницы. Нужен iPhone с iOS 18.6 или новее, а для приложения на часах — watchOS 11 или новее.';
         });
       }
     } catch { /* Keep the pending state if configuration is invalid. */ }

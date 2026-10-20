@@ -106,7 +106,7 @@ h3 { font-weight: 600; }
 .hero-copy { position: relative; z-index: 3; padding-block: 14px; }
 .hero h1 { font-size: clamp(64px, 6.4vw, 92px); font-weight: 650; letter-spacing: -.065em; line-height: .99; margin: 25px 0 28px; }
 .hero h1 span { color: var(--green); }
-.hero-description { font-size: 18px; line-height: 1.6; color: var(--muted); max-width: 395px; }
+.hero-description { font-size: 18px; line-height: 1.6; color: var(--muted); max-width: 440px; }
 .hero-actions { display: flex; gap: 25px; align-items: center; margin-top: 29px; flex-wrap: wrap; }
 .hero-availability { display: flex; align-items: center; gap: 8px; font-size: 11px; color: var(--muted); margin-top: 24px; }
 .hero-stage { position: relative; height: 620px; isolation: isolate; --hero-spread: 14px; --hero-lift: -14px; --hero-drop: 8px; }
@@ -148,7 +148,7 @@ h3 { font-weight: 600; }
 .progress-panel + .progress-panel { border-top: 1px solid var(--line); }
 .progress-panel-copy { max-width: 440px; }
 .panel-kicker { font-size: 10px; letter-spacing: .12em; font-weight: 600; color: var(--green); }
-.progress-panel h3 { font-size: clamp(30px, 3.4vw, 46px); line-height: 1.15; letter-spacing: -.045em; margin: 22px 0; }
+.progress-panel h3 { font-size: clamp(30px, 3.1vw, 42px); line-height: 1.15; letter-spacing: -.045em; margin: 22px 0; }
 .progress-panel-copy > p:not(.panel-kicker):not(.screen-hint) { color: var(--muted); font-size: 17px; line-height: 1.7; }
 .metric-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 27px; }
 .metric-tags span { font-size: 11px; padding: 7px 13px; border: 1px solid var(--line); border-radius: 100px; color: var(--green); }
@@ -180,7 +180,6 @@ h3 { font-weight: 600; }
 .watch-devices p { font-size: 13px; margin-top: 8px; color: var(--watch-muted); }
 .watch-note { color: var(--watch-muted); font-size: 11px; text-align: center; padding-top: 36px; margin-top: 48px; border-top: 1px solid rgb(130 150 120 / 30%); }
 .plan-visual { min-height: 675px; position: relative; isolation: isolate; background: var(--mint); border-radius: 30px; overflow: hidden; display: grid; place-items: center; padding: 35px 20px 60px; }
-.plan-wordmark { position: absolute; inset: 40px auto auto 18px; font-size: clamp(90px, 10vw, 145px); line-height: .86; font-weight: 750; letter-spacing: -.08em; opacity: .1; color: var(--green); }
 .plan-phone { width: 270px; max-width: 76%; transform: rotate(5deg); }
 .plan-visual-label { position: absolute; left: 0; right: 0; text-align: center; bottom: 24px; font-size: 9px; letter-spacing: .12em; color: var(--green); }
 .plan-steps { list-style: none; margin: 30px 0 0; padding: 0; }
@@ -356,7 +355,6 @@ h3 { font-weight: 600; }
   .feature-layout { grid-template-columns: 1fr; gap: 38px; }
   .training-section .feature-copy { order: -1; }
   .feature-copy .section-intro { max-width: 520px; }
-  .wide-break { display: none; }
   .feature-list { margin-top: 28px; }
   .feature-list li { padding-block: 18px; }
   .training-visual { width: 100%; padding-inline: 28px; }
@@ -378,7 +376,6 @@ h3 { font-weight: 600; }
   .watch-note { margin-top: 30px; }
   .plan-section .feature-copy { order: -1; }
   .plan-visual { min-height: 640px; }
-  .plan-wordmark { font-size: 150px; }
   .plan-phone { width: 260px; }
   .comfort-section { padding-block: 55px; }
   .comfort-grid { gap: 24px; }
@@ -466,7 +463,6 @@ h3 { font-weight: 600; }
   .plan-steps p { font-size: 14px; }
   .plan-visual { min-height: 580px; padding-top: 30px; border-radius: 23px; }
   .plan-phone { width: 240px; max-width: 85%; }
-  .plan-wordmark { font-size: 117px; top: 30px; }
   .plan-visual-label { font-size: 8px; bottom: 22px; }
   .comfort-section { padding-block: 45px; }
   .comfort-section h2 { font-size: 28px; line-height: 1.15; margin-bottom: 30px; }

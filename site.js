@@ -17,7 +17,7 @@
       }
     });
     document.querySelector('[data-theme-icon]')?.setAttribute('href', `#theme-${theme}`);
-    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#171c17' : '#f7f8f5');
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#171e19' : '#f7f8f4');
     document.querySelectorAll('img[data-screen]').forEach(img => {
       const variant = theme === 'mixed' ? img.dataset.mixed : theme;
       const base = `/assets/screenshots/iphone/${variant}/${img.dataset.screen}`;
@@ -49,6 +49,41 @@
   document.querySelectorAll('[data-language]').forEach(link => {
     link.addEventListener('click', () => { link.hash = location.hash; });
   });
+
+  // All three stories are readable without JS. Enhance them into keyboard-accessible tabs.
+  const progressTabs = document.querySelector('[data-progress-tabs]');
+  if (progressTabs) {
+    const tabs = [...progressTabs.querySelectorAll('button')];
+    const panels = tabs.map(tab => document.getElementById(tab.getAttribute('aria-controls')));
+    if (tabs.length && panels.every(Boolean)) {
+      function selectProgressTab(index, focus = false) {
+        tabs.forEach((tab, i) => {
+          tab.setAttribute('aria-selected', String(i === index));
+          tab.tabIndex = i === index ? 0 : -1;
+          panels[i].hidden = i !== index;
+        });
+        if (focus) tabs[index].focus({ preventScroll: true });
+      }
+      progressTabs.setAttribute('role', 'tablist');
+      tabs.forEach((tab, i) => {
+        tab.setAttribute('role', 'tab');
+        panels[i].setAttribute('role', 'tabpanel');
+        panels[i].setAttribute('aria-labelledby', tab.id);
+        panels[i].tabIndex = 0;
+        tab.addEventListener('click', () => selectProgressTab(i));
+        tab.addEventListener('keydown', event => {
+          const next = event.key === 'ArrowRight' ? (i + 1) % tabs.length
+            : event.key === 'ArrowLeft' ? (i - 1 + tabs.length) % tabs.length
+            : event.key === 'Home' ? 0 : event.key === 'End' ? tabs.length - 1 : null;
+          if (next === null) return;
+          event.preventDefault();
+          selectProgressTab(next, true);
+        });
+      });
+      selectProgressTab(0);
+      progressTabs.hidden = false;
+    }
+  }
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
 
@@ -66,9 +101,14 @@
         });
         document.querySelectorAll('[data-testflight-pending]').forEach(node => { node.hidden = true; });
         document.querySelectorAll('[data-testflight-note]').forEach(node => { node.textContent = english ? 'Open the link on your iPhone and follow the TestFlight instructions.' : 'Открой ссылку на iPhone и следуй инструкциям TestFlight.'; });
-        const description = document.querySelector('.testflight-card > p:not(.eyebrow):not(.testflight-note)');
-        if (description) description.innerHTML = english ? 'Strongary for iPhone and Apple Watch.<br>Join the public beta.' : 'Strongary для iPhone и Apple Watch.<br>Присоединяйся к открытому тестированию.';
-        document.querySelectorAll('.hero-actions a[href="#testflight"]').forEach(link => { link.innerHTML = `${english ? 'Try it on TestFlight' : 'Попробовать в TestFlight'} <span aria-hidden="true">↗</span>`; });
+        document.querySelectorAll('[data-release-status]').forEach(node => {
+          node.textContent = english ? 'Public beta available on TestFlight' : 'Открытое тестирование доступно в TestFlight';
+        });
+        document.querySelectorAll('[data-release-faq]').forEach(node => {
+          node.textContent = english
+            ? 'The public beta is available through TestFlight. Use the invitation below. You’ll need an iPhone with iOS 18.6 or later; the watch app requires watchOS 11 or later.'
+            : 'Открытое тестирование доступно через TestFlight. Ссылка на приглашение — ниже. Понадобится iPhone с iOS 18.6 или новее; для приложения на часах — watchOS 11 или новее.';
+        });
       }
     } catch { /* Keep the pending state if configuration is invalid. */ }
   }

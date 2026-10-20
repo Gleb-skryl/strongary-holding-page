@@ -50,19 +50,27 @@
     link.addEventListener('click', () => { link.hash = location.hash; });
   });
 
-  // All three stories are readable without JS. Enhance them into keyboard-accessible tabs.
+  // Without JS every slide stays readable. Controls sit below the product scene.
   const progressTabs = document.querySelector('[data-progress-tabs]');
   if (progressTabs) {
+    const gallery = progressTabs.closest('.progress-gallery');
+    const controls = gallery.querySelector('[data-gallery-controls]');
+    const slides = gallery.querySelector('[data-progress-slides]');
+    const caption = gallery.querySelector('[data-gallery-caption]');
     const tabs = [...progressTabs.querySelectorAll('button')];
     const panels = tabs.map(tab => document.getElementById(tab.getAttribute('aria-controls')));
     if (tabs.length && panels.every(Boolean)) {
+      let selectedIndex = 0;
       function selectProgressTab(index, focus = false) {
+        gallery.dataset.direction = index < selectedIndex ? 'previous' : 'next';
+        selectedIndex = (index + tabs.length) % tabs.length;
         tabs.forEach((tab, i) => {
-          tab.setAttribute('aria-selected', String(i === index));
-          tab.tabIndex = i === index ? 0 : -1;
-          panels[i].hidden = i !== index;
+          tab.setAttribute('aria-selected', String(i === selectedIndex));
+          tab.tabIndex = i === selectedIndex ? 0 : -1;
+          panels[i].hidden = i !== selectedIndex;
         });
-        if (focus) tabs[index].focus({ preventScroll: true });
+        caption.textContent = tabs[selectedIndex].getAttribute('aria-label');
+        if (focus) tabs[selectedIndex].focus({ preventScroll: true });
       }
       progressTabs.setAttribute('role', 'tablist');
       tabs.forEach((tab, i) => {
@@ -80,8 +88,34 @@
           selectProgressTab(next, true);
         });
       });
+      gallery.querySelector('[data-gallery-prev]').addEventListener('click', () => selectProgressTab(selectedIndex - 1));
+      gallery.querySelector('[data-gallery-next]').addEventListener('click', () => selectProgressTab(selectedIndex + 1));
+      // Horizontal gestures change slides; vertical gestures keep normal page scrolling.
+      let touchStart = null;
+      let suppressClickUntil = 0;
+      slides.addEventListener('touchstart', event => {
+        touchStart = event.touches.length === 1
+          ? { x: event.touches[0].clientX, y: event.touches[0].clientY } : null;
+      }, { passive: true });
+      slides.addEventListener('touchend', event => {
+        if (!touchStart || event.touches.length) { touchStart = null; return; }
+        const touch = event.changedTouches[0];
+        const dx = touch.clientX - touchStart.x;
+        const dy = touch.clientY - touchStart.y;
+        touchStart = null;
+        if (Math.abs(dx) < 48 || Math.abs(dx) < Math.abs(dy) * 1.4) return;
+        selectProgressTab(selectedIndex + (dx < 0 ? 1 : -1));
+        suppressClickUntil = event.timeStamp + 450;
+      }, { passive: true });
+      slides.addEventListener('touchcancel', () => { touchStart = null; }, { passive: true });
+      slides.addEventListener('click', event => {
+        if (event.timeStamp > suppressClickUntil) return;
+        event.preventDefault();
+        event.stopPropagation();
+      }, true);
       selectProgressTab(0);
-      progressTabs.hidden = false;
+      gallery.classList.add('is-enhanced');
+      controls.hidden = false;
     }
   }
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');

@@ -119,54 +119,76 @@ h3 { font-weight: 600; }
 .hero-device-workout { width: 51%; left: 0; top: 0; z-index: 2; --device-x: calc(0px - var(--hero-spread)); --device-y: var(--hero-lift); --device-angle: -6deg; }
 .hero-device-progress { width: 44%; right: -1%; top: 65px; --device-x: var(--hero-spread); --device-y: var(--hero-drop); --device-angle: 7deg; }
 .hero-watch { position: absolute; width: 31%; left: 46%; top: 328px; z-index: 4; transform: rotate(5deg); }
-.benefits-nav { display: grid; grid-template-columns: repeat(5, 1fr); padding-block: 25px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); gap: 24px; }
-.benefits-nav a { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 5px 8px; min-height: 50px; }
-.benefits-nav a > span { color: var(--green); font-size: 10px; font-variant-numeric: tabular-nums; grid-column: 1 / -1; }
-.benefits-nav strong { font-size: 13px; font-weight: 550; }
-.benefits-nav .icon { width: 17px; height: 17px; color: var(--green); transition: transform .2s; }
-.benefits-nav a:hover .icon { transform: translateX(4px); }
-/* Training and planning alternate the reading direction. */
-.feature-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 95px; align-items: center; }
-.feature-copy .eyebrow { margin-bottom: 22px; }
-.feature-copy h2 { margin-bottom: 25px; }
-.feature-copy .section-intro { max-width: 440px; }
-.feature-list { list-style: none; padding: 0; margin: 32px 0 0; }
-.feature-list li { display: flex; gap: 16px; align-items: flex-start; padding-block: 18px; border-top: 1px solid var(--line); }
-.feature-list li > .icon { color: var(--green); width: 22px; height: 22px; margin-top: 2px; }
-.feature-list h3 { font-size: 16px; line-height: 1.4; letter-spacing: -.25px; }
-.feature-list p { font-size: 14px; line-height: 1.6; color: var(--muted); margin-top: 5px; }
-.training-visual { border-radius: 30px; background: var(--soft); position: relative; padding: 28px 28px 22px; }
-.training-phone { width: 276px; max-width: 78%; margin-inline: auto; }
-/* Analytics explorer remains readable if JavaScript is unavailable. */
-.progress-section { background: var(--white); }
-.progress-explorer { background: var(--soft); border-radius: 30px; overflow: hidden; }
-.progress-tabs { display: grid; grid-template-columns: repeat(3, 1fr); padding: 8px; gap: 8px; border-bottom: 1px solid var(--line); }
-.progress-tabs button { border: 0; background: transparent; border-radius: 18px; padding: 18px 20px; display: flex; justify-content: center; align-items: center; gap: 13px; font-size: 15px; font-weight: 550; color: var(--muted); transition: background .2s, color .2s; }
-.progress-tabs button span { font-size: 10px; opacity: .7; }
-.progress-tabs button[aria-selected="true"] { background: var(--ink); color: var(--paper); }
-.progress-tabs button:not([aria-selected="true"]):hover { background: var(--mint); color: var(--ink); }
-.progress-panel { display: grid; grid-template-columns: 1.1fr 1fr; align-items: center; min-height: 655px; padding: 42px 72px; gap: 80px; }
+/* A single product scene gives the workout screen room to speak. */
+.training-section { background: var(--white); }
+.training-showcase { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.training-visual { position: relative; padding: 30px; border-radius: 34px; background: var(--soft); }
+.training-phone { width: 290px; max-width: 85%; margin-inline: auto; transform: rotate(-3deg); }
+.training-details { max-width: 430px; }
+.feature-statement { font-size: clamp(27px, 3vw, 38px); font-weight: 600; line-height: 1.18; letter-spacing: -.035em; }
+.feature-list { list-style: none; padding: 0; margin: 38px 0 0; display: grid; gap: 30px; }
+.feature-list li { display: flex; gap: 18px; align-items: flex-start; }
+.feature-list li > .icon { color: var(--green); width: 25px; height: 25px; margin-top: 1px; }
+.feature-list h3 { font-size: 20px; line-height: 1.3; letter-spacing: -.4px; }
+.feature-list p { font-size: 15px; line-height: 1.55; color: var(--muted); margin-top: 7px; max-width: 310px; }
+/* Planning continues the workout story in one compact composition. */
+.plan-section { padding-block: 0 108px; background: var(--white); }
+.plan-card { display: grid; grid-template-columns: 1.25fr 1fr; align-items: center; gap: 55px; padding: 42px 64px; border-radius: 34px; background: var(--mint); overflow: hidden; }
+.plan-copy h2 { font-size: clamp(34px, 3.6vw, 50px); margin: 20px 0; }
+.plan-copy .section-intro { max-width: 440px; font-size: 17px; }
+.plan-features { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 34px; }
+.plan-features strong { display: block; font-size: 16px; font-weight: 600; }
+.plan-features span { display: block; color: var(--muted); font-size: 13px; margin-top: 7px; max-width: 190px; }
+.plan-visual { min-height: 465px; display: grid; place-items: center; }
+.plan-phone { width: 225px; max-width: 100%; transform: rotate(5deg); }
+/* Apple-like bottom paging: the scene comes first, the controls follow. */
+.progress-section { background: var(--paper); }
+.progress-explorer { border-radius: 34px; overflow: hidden; background: var(--white); }
+.progress-panel { display: grid; grid-template-columns: 1.15fr 1fr; align-items: center; min-height: 650px; padding: 42px 72px; gap: 55px; }
 .progress-panel + .progress-panel { border-top: 1px solid var(--line); }
+.is-enhanced .progress-explorer { display: grid; }
+.is-enhanced .progress-panel { grid-area: 1 / 1; min-width: 0; border-top: 0; animation: gallery-enter .5s var(--ease) both; }
+/* Hidden slides still size the shared scene, so the controls never jump. */
+.is-enhanced .progress-panel[hidden] { display: grid !important; visibility: hidden; pointer-events: none; animation: none; }
 .progress-panel-copy { max-width: 440px; }
-.panel-kicker { font-size: 10px; letter-spacing: .12em; font-weight: 600; color: var(--green); }
-.progress-panel h3 { font-size: clamp(30px, 3.1vw, 42px); line-height: 1.15; letter-spacing: -.045em; margin: 22px 0; }
-.progress-panel-copy > p:not(.panel-kicker):not(.screen-hint) { color: var(--muted); font-size: 17px; line-height: 1.7; }
-.metric-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 27px; }
-.metric-tags span { font-size: 11px; padding: 7px 13px; border: 1px solid var(--line); border-radius: 100px; color: var(--green); }
-.screen-hint { display: flex; align-items: center; gap: 7px; margin-top: 40px; color: var(--muted); font-size: 11px; }
-.screen-hint .icon { width: 14px; height: 14px; }
-.progress-panel-visual { display: flex; align-items: center; flex-direction: column; }
+.panel-kicker { font-size: 10px; letter-spacing: .12em; font-weight: 650; color: var(--green); }
+.progress-panel h3 { font-size: clamp(31px, 3.3vw, 46px); line-height: 1.12; letter-spacing: -.045em; margin: 23px 0; text-wrap: balance; }
+.progress-panel h3 span { color: var(--green); }
+.progress-panel-copy > p:not(.panel-kicker) { color: var(--muted); font-size: 17px; line-height: 1.65; max-width: 360px; }
+.metric-tags { display: flex; flex-wrap: wrap; gap: 10px 18px; margin-top: 30px; }
+.metric-tags span { font-size: 12px; font-weight: 550; color: var(--green); }
+.metric-tags span + span::before { content: ""; display: inline-block; width: 3px; height: 3px; border-radius: 50%; background: currentColor; margin: 0 18px 3px 0; }
+.progress-panel-visual { display: grid; place-items: center; }
 .progress-phone { width: 265px; max-width: 100%; }
-.progress-panel-visual figcaption { color: var(--muted); font-size: 11px; margin-top: 23px; text-align: center; }
-.screens-note { color: var(--muted); font-size: 11px; margin-top: 20px; text-align: center; }
-/* Sports nutrition has equal weight in the story. */
-.intakes-section { overflow: clip; }
-.intakes-section .feature-layout { gap: 65px; }
-.intakes-stage { height: 660px; position: relative; isolation: isolate; }
-.intakes-backdrop { position: absolute; z-index: -1; inset: 50px -20px 42px; border-radius: 46% 46% 35% 35%; background: var(--mint); transform: rotate(6deg); }
-.intake-phone { position: absolute; width: 48%; }
-.intake-phone-day { left: 0; top: 18px; z-index: 2; transform: translateY(calc(var(--drift, 0) * -18px)) rotate(-5deg); }
-.intake-phone-stats { right: 0; top: 85px; transform: translateY(calc(var(--drift, 0) * 18px)) rotate(6deg); }
+.gallery-controls { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 24px; padding: 26px 4px 0; }
+.gallery-caption { font-size: 13px; font-weight: 550; color: var(--muted); }
+.gallery-dots { display: flex; align-items: center; justify-content: center; background: var(--mint); border-radius: 100px; padding: 4px 10px; }
+.gallery-dots button { display: grid; place-items: center; min-width: 44px; height: 44px; padding: 0 12px; border: 0; border-radius: 100px; background: transparent; }
+.gallery-dot { display: block; width: 7px; height: 7px; background: var(--muted); border-radius: 100px; transition: width .35s var(--ease), background .25s; }
+.gallery-dots button[aria-selected="true"] .gallery-dot { width: 30px; background: var(--ink); }
+.gallery-dots button:hover .gallery-dot { background: var(--ink); }
+.gallery-arrows { display: flex; justify-content: flex-end; gap: 10px; }
+.gallery-arrows button { display: grid; place-items: center; width: 44px; height: 44px; border: 0; border-radius: 50%; background: var(--mint); transition: background .2s; }
+.gallery-arrows button:hover { background: var(--line); }
+.gallery-arrows .icon { width: 19px; height: 19px; }
+[data-gallery-prev] .icon { transform: rotate(180deg); }
+@keyframes gallery-enter { from { opacity: .35; transform: translateX(18px); } to { opacity: 1; transform: translateX(0); } }
+[data-direction="previous"].is-enhanced .progress-panel { animation-name: gallery-enter-previous; }
+@keyframes gallery-enter-previous { from { opacity: .35; transform: translateX(-18px); } to { opacity: 1; transform: translateX(0); } }
+.screens-note { color: var(--muted); font-size: 11px; text-align: center; padding-block: 20px 0; }
+/* Two actual intake screens and three short, concrete highlights. */
+.intakes-section { background: var(--white); overflow: clip; }
+.intakes-heading > .section-intro { max-width: 355px; }
+.intakes-showcase { background: var(--soft); border-radius: 34px; padding: 50px 55px 44px; }
+.intakes-stage { width: min(100%, 660px); height: 650px; margin-inline: auto; position: relative; isolation: isolate; }
+.intakes-backdrop { position: absolute; z-index: -1; inset: 25px 0 45px; border-radius: 50%; background: var(--mint); }
+.intake-phone { position: absolute; width: 40%; }
+.intake-phone-day { left: 7%; top: 5px; z-index: 2; transform: translateY(calc(var(--drift, 0) * -18px)) rotate(-5deg); }
+.intake-phone-stats { right: 6%; top: 48px; transform: translateY(calc(var(--drift, 0) * 18px)) rotate(6deg); }
+.intakes-highlights { display: grid; grid-template-columns: repeat(3, 1fr); gap: 45px; padding-top: 25px; }
+.intakes-highlights .icon { color: var(--green); margin-bottom: 14px; }
+.intakes-highlights h3 { font-size: 19px; letter-spacing: -.4px; line-height: 1.3; }
+.intakes-highlights p { font-size: 14px; line-height: 1.55; color: var(--muted); margin-top: 8px; max-width: 235px; }
 /* Watch: three clear tasks, shown on three real screens. */
 .watch-section { background: var(--watch-bg); color: var(--watch-text); }
 .watch-section .eyebrow, .watch-section h2 span { color: var(--watch-accent); }
@@ -180,20 +202,6 @@ h3 { font-weight: 600; }
 .watch-devices h3 { font-size: 18px; font-weight: 550; letter-spacing: -.4px; }
 .watch-devices p { font-size: 13px; margin-top: 8px; color: var(--watch-muted); }
 .watch-note { color: var(--watch-muted); font-size: 11px; text-align: center; padding-top: 36px; margin-top: 48px; border-top: 1px solid rgb(130 150 120 / 30%); }
-.plan-visual { min-height: 675px; position: relative; isolation: isolate; background: var(--mint); border-radius: 30px; overflow: hidden; display: grid; place-items: center; padding: 35px 20px; }
-.plan-phone { width: 270px; max-width: 76%; transform: rotate(5deg); }
-.plan-steps { list-style: none; margin: 30px 0 0; padding: 0; }
-.plan-steps li { display: flex; gap: 20px; padding-block: 18px; border-top: 1px solid var(--line); }
-.plan-steps li > span { font-size: 12px; font-variant-numeric: tabular-nums; color: var(--green); padding-top: 3px; }
-.plan-steps h3 { font-size: 17px; letter-spacing: -.3px; }
-.plan-steps p { font-size: 14px; color: var(--muted); margin-top: 5px; }
-.comfort-section { background: var(--white); padding-block: 68px; }
-.comfort-section h2 { font-size: 30px; letter-spacing: -.035em; margin-bottom: 38px; }
-.comfort-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 65px; }
-.comfort-grid article > .icon { color: var(--green); margin-bottom: 18px; width: 27px; height: 27px; }
-.comfort-grid h3 { font-size: 19px; line-height: 1.3; letter-spacing: -.4px; }
-.comfort-grid p { font-size: 14px; color: var(--muted); line-height: 1.7; margin-top: 12px; }
-.comfort-grid .inline-link { margin-top: 16px; }
 .faq-section { display: grid; grid-template-columns: .8fr 1.2fr; gap: 90px; }
 .faq-heading h2 { margin-top: 20px; }
 .faq-list details { border-bottom: 1px solid var(--line); }
@@ -279,12 +287,8 @@ h3 { font-weight: 600; }
   .hero-backdrop { bottom: 20px; }
   .hero h1 { font-size: 5.9vw; }
   .hero-actions { gap: 18px; }
-  .feature-layout { gap: 60px; }
-  .progress-panel { gap: 50px; padding-inline: 50px; }
-  .intakes-stage { height: 590px; }
   .watch-devices { gap: 35px; }
   .watch-devices h3 { font-size: 16px; }
-  .plan-visual { min-height: 630px; }
 }
 @media (max-width: 1000px) {
   .wrap { width: calc(100% - 64px); }
@@ -304,32 +308,12 @@ h3 { font-weight: 600; }
   .hero-device-progress { right: 3%; }
   .hero-watch { top: 260px; }
   .hero-backdrop { inset: 70px -15px 35px 0; }
-  .benefits-nav { gap: 20px; }
-  .benefits-nav strong { font-size: 12px; }
-  .benefits-nav .icon { display: none; }
   .section-space { padding-block: 80px; }
-  .feature-layout, .intakes-section .feature-layout { gap: 40px; }
   .section-heading { gap: 35px; }
   .section-heading > .section-intro { font-size: 16px; max-width: 290px; }
-  .feature-copy .section-intro { font-size: 16px; }
   h2 { font-size: 4.8vw; }
-  .feature-list { margin-top: 25px; }
-  .feature-list li { gap: 12px; padding-block: 15px; }
-  .training-visual { padding-inline: 20px; }
-  .training-phone { max-width: 87%; }
-  .progress-panel { min-height: 620px; padding: 36px; gap: 35px; }
-  .progress-panel h3 { font-size: 34px; }
-  .progress-panel-copy > p:not(.panel-kicker):not(.screen-hint) { font-size: 16px; }
-  .progress-phone { width: 235px; }
-  .progress-tabs button { font-size: 13px; padding: 16px 10px; }
-  .intakes-stage { height: 500px; }
-  .intakes-backdrop { inset-inline: -10px; }
   .watch-devices { gap: 25px; }
   .watch-devices .device-watch { max-width: 210px; }
-  .plan-visual { min-height: 570px; }
-  .plan-phone { max-width: 84%; }
-  .comfort-grid { gap: 30px; }
-  .comfort-grid h3 { font-size: 17px; }
   .faq-section { gap: 50px; }
   .testflight-card { padding: 48px; gap: 45px; }
   .testflight-brand img { width: 130px; border-radius: 34px; }
@@ -346,41 +330,13 @@ h3 { font-weight: 600; }
   .hero-device-progress { width: 43%; right: 0; top: 50px; }
   .hero-watch { width: 30%; top: 290px; }
   .hero-backdrop { inset: 40px -15px 35px; }
-  .benefits-nav { gap: 14px; }
-  .benefits-nav strong { font-size: 11px; line-height: 1.4; }
   .section-heading { display: block; margin-bottom: 32px; }
   .section-heading > .section-intro { max-width: 500px; margin-top: 22px; }
   h2 { font-size: 43px; }
-  .feature-layout { grid-template-columns: 1fr; gap: 38px; }
-  .training-section .feature-copy { order: -1; }
-  .feature-copy .section-intro { max-width: 520px; }
-  .feature-list { margin-top: 28px; }
-  .feature-list li { padding-block: 18px; }
-  .training-visual { width: 100%; padding-inline: 28px; }
-  .training-phone { width: 260px; max-width: 78%; }
-  .progress-panel { grid-template-columns: 1fr; padding: 38px; gap: 32px; }
-  .progress-panel-copy { max-width: 100%; }
-  .progress-panel h3 { font-size: 36px; margin-block: 18px; }
-  .screen-hint { margin-top: 24px; }
-  .progress-phone { width: 250px; }
-  .intakes-section .feature-layout { grid-template-columns: 1fr; gap: 30px; }
-  .intakes-stage { width: min(100%, 480px); height: 610px; margin-inline: auto; }
-  .intakes-backdrop { inset: 45px -5px 35px; }
-  .intake-phone { width: 47%; }
-  .intake-phone-day { left: 3%; }
-  .intake-phone-stats { right: 3%; }
   .watch-devices { gap: 15px; }
   .watch-devices h3 { font-size: 14px; line-height: 1.4; }
   .watch-devices p { font-size: 12px; line-height: 1.6; }
   .watch-note { margin-top: 30px; }
-  .plan-section .feature-copy { order: -1; }
-  .plan-visual { min-height: 640px; }
-  .plan-phone { width: 260px; }
-  .comfort-section { padding-block: 55px; }
-  .comfort-grid { gap: 24px; }
-  .comfort-grid h3 { font-size: 16px; }
-  .comfort-grid p { font-size: 13px; }
-  .comfort-grid .inline-link { font-size: 12px; }
   .faq-section { grid-template-columns: 1fr; gap: 32px; }
   .faq-heading h2 br { display: none; }
   .testflight-card { gap: 25px; padding: 42px 35px; }
@@ -413,37 +369,11 @@ h3 { font-weight: 600; }
   .hero-watch { width: 30%; left: 46%; top: 53%; }
   .hero-backdrop { inset: 6% -4px 7%; }
   .hero-backdrop span { font-size: 80px; }
-  .benefits-nav { grid-template-columns: repeat(3, 1fr); gap: 14px 20px; padding-block: 20px; }
-  .benefits-nav a { min-height: 42px; gap: 3px; }
-  .benefits-nav strong { font-size: 11px; }
   .section-space { padding-block: 62px; }
   .eyebrow { font-size: 10px; letter-spacing: .11em; }
   h2 { font-size: clamp(33px, 8.7vw, 44px); }
-  .feature-copy .eyebrow { margin-bottom: 18px; }
-  .feature-copy h2 { margin-bottom: 20px; }
   .section-intro, .feature-copy .section-intro, .section-heading > .section-intro { font-size: 16px; line-height: 1.65; }
-  .feature-list h3 { font-size: 15px; }
-  .feature-list p { font-size: 14px; }
-  .training-visual { border-radius: 23px; padding: 24px 20px 22px; }
-  .training-phone { width: 248px; max-width: 85%; }
-  .progress-explorer { border-radius: 22px; }
-  .progress-tabs { padding: 6px; gap: 4px; }
-  .progress-tabs button { font-size: 11px; padding: 13px 6px; border-radius: 14px; min-height: 44px; }
-  .progress-tabs button span { display: none; }
-  .progress-panel { padding: 27px 22px 30px; gap: 28px; }
   .panel-kicker { font-size: 9px; }
-  .progress-panel h3 { font-size: 30px; }
-  .progress-panel-copy > p:not(.panel-kicker):not(.screen-hint) { font-size: 15px; }
-  .metric-tags { gap: 6px; margin-top: 23px; }
-  .metric-tags span { font-size: 10px; padding: 6px 10px; }
-  .screen-hint { font-size: 10px; line-height: 1.5; }
-  .progress-phone { width: 235px; max-width: 100%; }
-  .progress-panel-visual figcaption { font-size: 10px; margin-top: 20px; }
-  .screens-note { font-size: 10px; padding-inline: 12px; line-height: 1.6; }
-  .intakes-stage { height: auto; aspect-ratio: .78; margin-top: 15px; }
-  .intakes-backdrop { inset: 10px -4px 25px; }
-  .intake-phone-day { top: 0; left: 3%; }
-  .intake-phone-stats { top: 45px; right: 3%; }
   .watch-devices { grid-template-columns: 1fr; gap: 30px; margin-top: 5px; }
   .watch-devices figure { display: grid; grid-template-columns: 43% 1fr; gap: 22px; align-items: center; text-align: left; }
   .watch-devices .device-watch { width: 100%; max-width: 180px; }
@@ -454,20 +384,6 @@ h3 { font-weight: 600; }
   .watch-devices h3 { font-size: 17px; letter-spacing: -.4px; }
   .watch-devices p { font-size: 13px; margin-top: 10px; }
   .watch-note { font-size: 10px; line-height: 1.65; margin-top: 28px; padding-top: 26px; }
-  .plan-steps li { gap: 16px; }
-  .plan-steps h3 { font-size: 16px; }
-  .plan-steps p { font-size: 14px; }
-  .plan-visual { min-height: 580px; padding-top: 30px; border-radius: 23px; }
-  .plan-phone { width: 240px; max-width: 85%; }
-  .plan-visual-label { font-size: 8px; bottom: 22px; }
-  .comfort-section { padding-block: 45px; }
-  .comfort-section h2 { font-size: 28px; line-height: 1.15; margin-bottom: 30px; }
-  .comfort-grid { grid-template-columns: 1fr; gap: 28px; }
-  .comfort-grid article { display: grid; grid-template-columns: 28px 1fr; gap: 0 18px; }
-  .comfort-grid article > .icon { grid-row: 1 / 4; margin: 0; width: 25px; height: 25px; }
-  .comfort-grid h3 { font-size: 17px; }
-  .comfort-grid p { font-size: 14px; margin-top: 8px; }
-  .comfort-grid .inline-link { grid-column: 2; margin-top: 12px; }
   .faq-list summary { font-size: 15px; padding-block: 20px; gap: 20px; }
   .faq-list details > p { font-size: 14px; padding-right: 0; }
   .testflight-card { display: flex; flex-direction: column-reverse; gap: 30px; padding: 35px 25px 38px; border-radius: 23px; }
@@ -504,9 +420,101 @@ h3 { font-weight: 600; }
   .hero-actions .button { padding-inline: 15px; font-size: 11px; gap: 8px; }
   .hero-actions .text-link { font-size: 11px; }
   .theme-menu { right: -65px; }
-  .progress-panel { padding-inline: 18px; }
-  .progress-tabs button { font-size: 10px; }
-  .plan-visual { min-height: 545px; }
+}
+@media (max-width: 1000px) {
+  .training-showcase { gap: 45px; }
+  .training-visual { padding: 30px 15px; }
+  .training-phone { width: 260px; max-width: 90%; }
+  .feature-list h3 { font-size: 18px; }
+  .feature-list p { font-size: 14px; }
+  .plan-section { padding-bottom: 80px; }
+  .plan-card { padding: 32px 38px; gap: 30px; }
+  .plan-features { gap: 20px; }
+  .plan-visual { min-height: 445px; }
+  .plan-phone { width: 210px; }
+  .progress-panel { padding: 36px 42px; gap: 30px; min-height: 590px; }
+  .progress-panel h3 { font-size: 35px; }
+  .progress-panel-copy > p:not(.panel-kicker) { font-size: 16px; }
+  .progress-phone { width: 240px; }
+  .intakes-showcase { padding: 38px; }
+  .intakes-stage { height: auto; aspect-ratio: 1; }
+  .intakes-highlights { gap: 28px; }
+  .intakes-highlights h3 { font-size: 17px; }
+}
+@media (max-width: 760px) {
+  .training-showcase { grid-template-columns: 1fr; gap: 32px; }
+  .training-visual { padding: 30px; }
+  .training-phone { width: 265px; }
+  .training-details { max-width: 100%; }
+  .feature-statement { font-size: 28px; }
+  .feature-statement br { display: none; }
+  .feature-list { grid-template-columns: repeat(3, 1fr); gap: 25px; margin-top: 28px; }
+  .feature-list li { display: block; }
+  .feature-list li > .icon { margin-bottom: 12px; }
+  .feature-list h3 { font-size: 17px; }
+  .feature-list p { font-size: 13px; }
+  .plan-card { grid-template-columns: 1fr; gap: 20px; padding: 38px; }
+  .plan-copy { max-width: 480px; }
+  .plan-copy h2 { font-size: 38px; }
+  .plan-visual { min-height: 430px; }
+  .plan-phone { width: 205px; }
+  .progress-panel { grid-template-columns: 1fr; gap: 32px; padding: 35px; }
+  .is-enhanced .progress-panel { grid-template-rows: 1fr auto; }
+  .progress-panel-copy { min-height: 250px; }
+  .progress-panel h3 { font-size: 36px; margin-block: 18px; }
+  .progress-panel-copy > p:not(.panel-kicker) { max-width: 420px; }
+  .progress-phone { width: 235px; }
+  .gallery-controls { gap: 16px; }
+  .gallery-caption { font-size: 12px; }
+  .intakes-stage { max-width: 530px; }
+  .intakes-showcase { padding: 35px 30px; }
+  .intakes-highlights { gap: 22px; }
+  .intakes-highlights h3 { font-size: 16px; }
+  .intakes-highlights p { font-size: 13px; }
+  .testflight-section { padding-bottom: 30px; }
+}
+@media (max-width: 520px) {
+  .training-visual, .plan-card, .progress-explorer, .intakes-showcase { border-radius: 24px; }
+  .training-visual { padding: 25px 20px; }
+  .training-phone { width: 240px; }
+  .feature-statement { font-size: 25px; }
+  .feature-list { grid-template-columns: 1fr; gap: 25px; }
+  .feature-list li { display: flex; }
+  .feature-list li > .icon { margin-bottom: 0; }
+  .feature-list h3 { font-size: 18px; }
+  .feature-list p { font-size: 14px; }
+  .plan-section { padding-bottom: 62px; }
+  .plan-card { padding: 30px 25px; }
+  .plan-copy h2 { font-size: 32px; }
+  .plan-copy .section-intro { font-size: 16px; }
+  .plan-features { gap: 18px; margin-top: 26px; }
+  .plan-features strong { font-size: 15px; }
+  .plan-features span { font-size: 12px; }
+  .plan-visual { min-height: 420px; }
+  .progress-panel { padding: 28px 24px 30px; gap: 24px; }
+  .progress-panel-copy { min-height: 265px; }
+  .progress-panel h3 { font-size: 30px; }
+  .progress-panel-copy > p:not(.panel-kicker) { font-size: 15px; }
+  .progress-phone { width: 220px; }
+  .metric-tags { gap: 8px 12px; margin-top: 22px; }
+  .metric-tags span { font-size: 11px; }
+  .metric-tags span + span::before { margin-right: 12px; }
+  .gallery-controls { grid-template-columns: 1fr auto; gap: 15px; padding: 18px 0 0; }
+  .gallery-caption { grid-column: 1 / -1; grid-row: 2; text-align: center; }
+  .gallery-dots { justify-self: start; }
+  .gallery-arrows { gap: 8px; }
+  .intakes-showcase { padding: 27px 22px 30px; }
+  .intakes-stage { aspect-ratio: .86; }
+  .intake-phone { width: 45%; }
+  .intake-phone-day { left: 2%; top: 0; }
+  .intake-phone-stats { right: 1%; top: 32px; }
+  .intakes-backdrop { inset: 10px -5px 20px; }
+  .intakes-highlights { grid-template-columns: 1fr; gap: 26px; padding-top: 14px; }
+  .intakes-highlights article { display: grid; grid-template-columns: 25px 1fr; gap: 0 16px; }
+  .intakes-highlights .icon { grid-row: 1 / 3; margin-top: 1px; }
+  .intakes-highlights h3 { font-size: 17px; }
+  .intakes-highlights p { max-width: 100%; margin-top: 5px; font-size: 14px; }
+  .screens-note { font-size: 10px; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

@@ -17,7 +17,7 @@
       }
     });
     document.querySelector('[data-theme-icon]')?.setAttribute('href', `#theme-${theme}`);
-    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#25211c' : '#faf8f4');
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#101b16' : '#f7f9f5');
     if (save) {
       try { localStorage.setItem('strongary-theme', theme); } catch { /* Still switch this page. */ }
     }
@@ -148,9 +148,14 @@
   if ('IntersectionObserver' in window) {
     const revealObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('is-visible');
-        revealObserver.unobserve(entry.target);
+        if (entry.isIntersecting || reducedMotion.matches) {
+          entry.target.classList.add('is-visible');
+        } else if (entry.boundingClientRect.top > innerHeight + 40) {
+          // Replay only after the scene has fully left below the viewport.
+          // Visible content and anything above the reader are never hidden.
+          entry.target.classList.add('will-reveal');
+          entry.target.classList.remove('is-visible');
+        }
       });
     }, { threshold: .08, rootMargin: '0px 0px -30px 0px' });
     document.querySelectorAll('[data-reveal]').forEach(node => {
@@ -165,6 +170,7 @@
 
   const heroStage = document.querySelector('.hero-stage');
   const intakeStage = document.querySelector('[data-parallax]');
+  const scrollScenes = [...document.querySelectorAll('[data-scroll-scene]')];
   const progressBar = document.querySelector('.reading-progress');
   const nativeScrollMotion = CSS.supports('animation-timeline: view()') && CSS.supports('view-timeline-name: --hero-motion');
   const navSections = [...document.querySelectorAll('main > section[id]')];
@@ -181,7 +187,7 @@
     const y = scrollY;
     height = innerHeight;
     pageHeight = root.scrollHeight - height;
-    sceneBounds = nativeScrollMotion ? [] : [[heroStage, '--hero-shift'], [intakeStage, '--drift']]
+    sceneBounds = nativeScrollMotion ? [] : [[heroStage, '--hero-shift'], [intakeStage, '--drift'], ...scrollScenes.map(node => [node, '--scene-progress'])]
       .filter(([node]) => node)
       .map(([node, property]) => {
         const rect = node.getBoundingClientRect();

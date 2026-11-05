@@ -17,7 +17,7 @@
       }
     });
     document.querySelector('[data-theme-icon]')?.setAttribute('href', `#theme-${theme}`);
-    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#25211c' : '#f4f0e8');
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#25211c' : '#faf8f4');
     if (save) {
       try { localStorage.setItem('strongary-theme', theme); } catch { /* Still switch this page. */ }
     }

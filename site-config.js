@@ -1,3 +1,2 @@
-// Paste the public TestFlight invitation here when testing opens.
-// Example format: https://testflight.apple.com/join/XXXXXXXX
-window.STRONGARY_CONFIG = Object.freeze({ testflightUrl: '' });
+// App Store product URL. Build embeds the validated URL into both languages.
+window.STRONGARY_CONFIG = Object.freeze({ appStoreUrl: '' });

@@ -17,14 +17,7 @@
       }
     });
     document.querySelector('[data-theme-icon]')?.setAttribute('href', `#theme-${theme}`);
-    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#171e19' : '#f7f8f4');
-    document.querySelectorAll('img[data-screen]').forEach(img => {
-      const variant = theme === 'mixed' ? img.dataset.mixed : theme;
-      const base = `/assets/screenshots/iphone/${variant}/${img.dataset.screen}`;
-      if (img.getAttribute('src') !== `${base}.webp`) img.src = `${base}.webp`;
-      const link = img.closest('[data-zoom]');
-      if (link) link.href = `${base}.png`;
-    });
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#25211c' : '#f4f0e8');
     if (save) {
       try { localStorage.setItem('strongary-theme', theme); } catch { /* Still switch this page. */ }
     }
@@ -120,32 +113,6 @@
   }
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
-
-  // An unset invitation is a status, never a dead or fabricated download link.
-  const invitation = window.STRONGARY_CONFIG?.testflightUrl?.trim();
-  if (invitation) {
-    try {
-      const url = new URL(invitation);
-      if (url.protocol === 'https:' && url.hostname === 'testflight.apple.com' && /^\/join\/[a-z0-9]+\/?$/i.test(url.pathname) && !url.username && !url.password) {
-        document.querySelectorAll('[data-testflight-link]').forEach(link => {
-          link.href = url.href;
-          link.hidden = false;
-          link.rel = 'noopener noreferrer';
-          link.target = '_blank';
-        });
-        document.querySelectorAll('[data-testflight-pending]').forEach(node => { node.hidden = true; });
-        document.querySelectorAll('[data-testflight-note]').forEach(node => { node.textContent = english ? 'This link opens beta installation through TestFlight on your iPhone.' : 'Ссылка откроет установку бета-версии через TestFlight на iPhone.'; });
-        document.querySelectorAll('[data-release-status]').forEach(node => {
-          node.textContent = english ? 'The free iPhone beta is available' : 'Бесплатная бета-версия для iPhone уже доступна';
-        });
-        document.querySelectorAll('[data-release-faq]').forEach(node => {
-          node.textContent = english
-            ? 'You’ll need TestFlight, Apple’s app for installing beta versions. The Strongary link is at the bottom of this page. You’ll need an iPhone with iOS 18.6 or later; the watch app requires watchOS 11 or later.'
-            : 'Для установки понадобится TestFlight — приложение Apple для бета-версий. Ссылка на Strongary — внизу этой страницы. Нужен iPhone с iOS 18.6 или новее, а для приложения на часах — watchOS 11 или новее.';
-        });
-      }
-    } catch { /* Keep the pending state if configuration is invalid. */ }
-  }
 
   // Native dialog gives keyboard users focus containment, Escape and focus return.
   const dialog = document.getElementById('zoom-dialog');

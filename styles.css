@@ -1,26 +1,26 @@
 :root {
   color-scheme: light;
-  --paper: #f7f8f4;
+  --paper: #f4f0e8;
   --white: #ffffff;
-  --ink: #222b23;
-  --muted: #667063;
-  --green: #526e48;
-  --line: #dce2d7;
-  --soft: #eef1e8;
-  --mint: #e4ebd9;
-  --header: rgb(247 248 244 / 93%);
-  --watch-bg: #202d25;
-  --watch-text: #f5f7ee;
-  --watch-accent: #c4dba5;
-  --watch-muted: #bdc9bb;
+  --ink: #302a23;
+  --muted: #71695f;
+  --green: #a8433b;
+  --line: #ded7cc;
+  --soft: #ece5db;
+  --mint: #e8ded0;
+  --header: rgb(244 240 232 / 93%);
+  --watch-bg: #332d26;
+  --watch-text: #f7f2e9;
+  --watch-accent: #ffaaa2;
+  --watch-muted: #cec3b5;
   --ease: cubic-bezier(.22, 1, .36, 1);
 }
-:root[data-theme="light"] { --watch-bg: #e9eee1; --watch-text: #222b23; --watch-accent: #526e48; --watch-muted: #5d6b58; }
+:root[data-theme="light"] { --watch-bg: #eae1d5; --watch-text: #302a23; --watch-accent: #a8433b; --watch-muted: #75675b; }
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --paper: #171e19; --white: #1e2720; --ink: #f1f4e9; --muted: #b4bfad;
-  --green: #bed5a6; --line: #364436; --soft: #253026; --mint: #303e2c;
-  --header: rgb(23 30 25 / 94%); --watch-bg: #111a14;
+  --paper: #25211c; --white: #302a24; --ink: #f7f2e9; --muted: #c9bfb3;
+  --green: #ffaaa2; --line: #51473b; --soft: #393128; --mint: #44392e;
+  --header: rgb(37 33 28 / 94%); --watch-bg: #1d1915;
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 100px; }
@@ -33,12 +33,12 @@ img { display: block; max-width: 100%; height: auto; }
 h1, h2, h3, p, figure { margin: 0; }
 button, input { font: inherit; }
 [hidden] { display: none !important; }
-:focus-visible { outline: 3px solid #71995b; outline-offset: 5px; }
-::selection { background: #cdddbb; color: #1d311c; }
+:focus-visible { outline: 3px solid #b84b42; outline-offset: 5px; }
+::selection { background: #f0c8bd; color: #44221d; }
 .wrap { width: min(1240px, calc(100% - 96px)); margin-inline: auto; }
 .icon { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.65; stroke-linecap: round; stroke-linejoin: round; flex: none; }
 .svg-library { width: 0; height: 0; position: absolute; overflow: hidden; }
-.skip-link { position: fixed; z-index: 100; top: 12px; left: 16px; padding: 12px 20px; background: white; color: #222b23; border-radius: 10px; transform: translateY(-180%); }
+.skip-link { position: fixed; z-index: 100; top: 12px; left: 16px; padding: 12px 20px; background: white; color: #302a23; border-radius: 10px; transform: translateY(-180%); }
 .skip-link:focus { transform: none; }
 .eyebrow { font-size: 11px; letter-spacing: .14em; font-weight: 650; line-height: 1.5; color: var(--green); }
 h2 { font-size: clamp(38px, 4.25vw, 62px); line-height: 1.08; letter-spacing: -.05em; font-weight: 620; text-wrap: balance; }
@@ -55,7 +55,7 @@ h3 { font-weight: 600; }
 .button .icon { width: 18px; height: 18px; }
 .button-dark { background: var(--ink); color: var(--paper); }
 .button-dark:hover { opacity: .88; }
-.button-light { background: #e6efcf; color: #253321; }
+.button-light { background: #f4e9d9; color: #3d2d22; }
 .text-link { display: inline-flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 500; min-height: 44px; }
 .text-link:hover, .inline-link:hover { color: var(--green); }
 .text-link .icon { width: 18px; height: 18px; }
@@ -212,18 +212,18 @@ h3 { font-weight: 600; }
 .faq-list details[open] summary .icon { transform: rotate(45deg); }
 .faq-list details > p { color: var(--muted); font-size: 15px; line-height: 1.75; padding-bottom: 24px; padding-right: 28px; }
 /* Honest release state: this becomes an install link only with a valid invitation. */
-.testflight-card { background: var(--watch-bg); color: var(--watch-text); border-radius: 30px; padding: 64px 70px; display: grid; grid-template-columns: 1.5fr 1fr; gap: 70px; align-items: center; }
-.testflight-card .eyebrow, .testflight-card h2 span { color: var(--watch-accent); }
-.testflight-card h2 { font-size: clamp(40px, 4.5vw, 64px); margin: 22px 0; }
+.download-card { background: var(--watch-bg); color: var(--watch-text); border-radius: 30px; padding: 64px 70px; display: grid; grid-template-columns: 1.5fr 1fr; gap: 70px; align-items: center; }
+.download-card .eyebrow, .download-card h2 span { color: var(--watch-accent); }
+.download-card h2 { font-size: clamp(40px, 4.5vw, 64px); margin: 22px 0; }
 .release-description { color: var(--watch-muted); font-size: 16px; max-width: 415px; }
-.testflight-action { margin-top: 28px; }
-.testflight-pending { padding: 13px 20px; border: 1px solid rgb(130 150 120 / 50%); border-radius: 100px; display: inline-flex; gap: 10px; align-items: center; font-size: 13px; color: var(--watch-text); }
-.testflight-pending .status-dot { background: var(--watch-accent); }
-.testflight-note { color: var(--watch-muted); font-size: 11px; margin-top: 14px; max-width: 350px; }
-.testflight-brand { display: flex; align-items: center; flex-direction: column; }
-.testflight-brand img { border-radius: 42px; box-shadow: 0 18px 35px #0002; }
-.testflight-brand strong { font-size: 41px; font-weight: 600; letter-spacing: -2px; margin-top: 18px; }
-.testflight-brand > span { font-size: 12px; color: var(--watch-muted); margin-top: 2px; }
+.download-action { margin-top: 28px; }
+.download-pending { padding: 13px 20px; border: 1px solid rgb(130 150 120 / 50%); border-radius: 100px; display: inline-flex; gap: 10px; align-items: center; font-size: 13px; color: var(--watch-text); }
+.download-pending .status-dot { background: var(--watch-accent); }
+.download-note { color: var(--watch-muted); font-size: 11px; margin-top: 14px; max-width: 350px; }
+.download-brand { display: flex; align-items: center; flex-direction: column; }
+.download-brand img { border-radius: 42px; box-shadow: 0 18px 35px #0002; }
+.download-brand strong { font-size: 41px; font-weight: 600; letter-spacing: -2px; margin-top: 18px; }
+.download-brand > span { font-size: 12px; color: var(--watch-muted); margin-top: 2px; }
 .site-footer { padding: 45px 0 35px; display: flex; align-items: center; gap: 30px; flex-wrap: wrap; }
 .site-footer .brand { font-size: 18px; font-weight: 650; letter-spacing: -.6px; }
 .site-footer small { font-size: 11px; color: var(--muted); }
@@ -315,9 +315,9 @@ h3 { font-weight: 600; }
   .watch-devices { gap: 25px; }
   .watch-devices .device-watch { max-width: 210px; }
   .faq-section { gap: 50px; }
-  .testflight-card { padding: 48px; gap: 45px; }
-  .testflight-brand img { width: 130px; border-radius: 34px; }
-  .testflight-brand strong { font-size: 35px; }
+  .download-card { padding: 48px; gap: 45px; }
+  .download-brand img { width: 130px; border-radius: 34px; }
+  .download-brand strong { font-size: 35px; }
 }
 @media (max-width: 760px) {
   .hero-layout { display: flex; flex-direction: column; gap: 28px; padding-block: 42px 35px; }
@@ -339,11 +339,11 @@ h3 { font-weight: 600; }
   .watch-note { margin-top: 30px; }
   .faq-section { grid-template-columns: 1fr; gap: 32px; }
   .faq-heading h2 br { display: none; }
-  .testflight-card { gap: 25px; padding: 42px 35px; }
-  .testflight-card h2 { font-size: 40px; }
-  .testflight-brand img { width: 110px; border-radius: 29px; }
-  .testflight-brand strong { font-size: 28px; letter-spacing: -1.3px; }
-  .testflight-brand > span { font-size: 10px; }
+  .download-card { gap: 25px; padding: 42px 35px; }
+  .download-card h2 { font-size: 40px; }
+  .download-brand img { width: 110px; border-radius: 29px; }
+  .download-brand strong { font-size: 28px; letter-spacing: -1.3px; }
+  .download-brand > span { font-size: 10px; }
 }
 @media (max-width: 520px) {
   .wrap { width: calc(100% - 40px); }
@@ -386,16 +386,16 @@ h3 { font-weight: 600; }
   .watch-note { font-size: 10px; line-height: 1.65; margin-top: 28px; padding-top: 26px; }
   .faq-list summary { font-size: 15px; padding-block: 20px; gap: 20px; }
   .faq-list details > p { font-size: 14px; padding-right: 0; }
-  .testflight-card { display: flex; flex-direction: column-reverse; gap: 30px; padding: 35px 25px 38px; border-radius: 23px; }
-  .testflight-brand { flex-direction: row; gap: 12px; justify-content: flex-start; width: 100%; }
-  .testflight-brand img { width: 52px; border-radius: 14px; }
-  .testflight-brand strong { font-size: 28px; margin: 0; }
-  .testflight-brand > span { display: none; }
-  .testflight-card .eyebrow { font-size: 9px; }
-  .testflight-card h2 { font-size: clamp(33px, 8.5vw, 42px); }
+  .download-card { display: flex; flex-direction: column-reverse; gap: 30px; padding: 35px 25px 38px; border-radius: 23px; }
+  .download-brand { flex-direction: row; gap: 12px; justify-content: flex-start; width: 100%; }
+  .download-brand img { width: 52px; border-radius: 14px; }
+  .download-brand strong { font-size: 28px; margin: 0; }
+  .download-brand > span { display: none; }
+  .download-card .eyebrow { font-size: 9px; }
+  .download-card h2 { font-size: clamp(33px, 8.5vw, 42px); }
   .release-description { font-size: 15px; }
-  .testflight-action { margin-top: 23px; }
-  .testflight-note { font-size: 10px; line-height: 1.7; }
+  .download-action { margin-top: 23px; }
+  .download-note { font-size: 10px; line-height: 1.7; }
   .site-footer { gap: 20px 12px; padding-block: 35px 28px; }
   .site-footer nav { width: 100%; order: 3; margin: 0; gap: 20px; font-size: 11px; }
   .site-footer small { margin-left: auto; font-size: 10px; }
@@ -471,7 +471,7 @@ h3 { font-weight: 600; }
   .intakes-highlights { gap: 22px; }
   .intakes-highlights h3 { font-size: 16px; }
   .intakes-highlights p { font-size: 13px; }
-  .testflight-section { padding-bottom: 30px; }
+  .download-section { padding-bottom: 30px; }
 }
 @media (max-width: 520px) {
   .training-visual, .plan-card, .progress-explorer, .intakes-showcase { border-radius: 24px; }
@@ -523,4 +523,19 @@ h3 { font-weight: 600; }
   .hero-device { transform: rotate(var(--device-angle)); }
   .intake-phone-day { transform: rotate(-5deg); }
   .intake-phone-stats { transform: rotate(6deg); }
+}
+
+/* Release screenshots are the original light iPhone and dark Watch captures. */
+.plan-visual { display:flex; align-items:center; justify-content:center; gap:18px; padding-inline:12px; }
+.plan-visual .plan-phone { width:46%; flex:none; transform:translateY(35px) rotate(-5deg); }
+.plan-visual .plan-phone-schedule { transform:translateY(-15px) rotate(5deg); }
+.intake-phone-day { left:50%; transform:translateX(-50%) rotate(-4deg); width:280px; }
+.intakes-backdrop { left:24%; right:24%; }
+.document h2 { scroll-margin-top:110px; }
+.document .document-nav { display:flex; flex-wrap:wrap; gap:10px 20px; margin:28px 0 38px; font-size:14px; }
+.faq-list p a { text-decoration:underline; text-underline-offset:3px; }
+@media(max-width:600px) {
+  .plan-visual { gap:10px; min-height:420px; overflow:hidden; }
+  .plan-visual .plan-phone { width:44%; }
+  .intake-phone-day { width:232px; }
 }

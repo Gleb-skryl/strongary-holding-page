@@ -690,3 +690,114 @@ h3 { font-weight: 600; }
 @media (max-width:520px) and (prefers-reduced-motion:reduce) {
  .watch-devices figcaption { margin-top:0; padding-top:0; }
 }
+
+/* Editorial refinement: quieter hierarchy, larger devices, alternating scenes. */
+.hero h1 { line-height:.97; margin-bottom:25px; }
+.hero h1 em { margin-top:-.025em; }
+.hero h1 .hero-result { font-size:clamp(20px,2.05vw,28px); line-height:1.35; color:var(--muted); font-weight:450; letter-spacing:-.025em; margin-top:24px; }
+.hero-lead { font-weight:400; }
+.hero-summary { display:block; color:var(--accent); font-weight:550; margin-top:6px; }
+.plan-card { grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr); gap:64px; }
+.plan-copy h2 { font-size:clamp(38px,4.1vw,58px); }
+.plan-features { grid-template-columns:1fr; gap:20px; margin-top:28px; padding-top:24px; }
+.plan-features p { display:grid; grid-template-columns:100px 1fr; gap:16px; align-items:baseline; }
+.plan-features strong { font-size:15px; }
+.plan-features span { max-width:none; margin:0; font-size:14px; line-height:1.6; }
+.plan-visual { min-height:625px; gap:22px; padding-inline:0; }
+.plan-visual .plan-phone { width:min(270px,46%); }
+
+/* The shared grid keeps controls stationary while copy and devices move independently. */
+.progress-panel { grid-template-columns:1fr 1.05fr; min-height:740px; padding:48px 64px; gap:60px; }
+.progress-phone { width:300px; transform-origin:50% 60%; }
+.progress-panel-visual { perspective:1100px; }
+.progress-gallery { --gallery-sign:1; }
+.progress-gallery[data-direction="previous"] { --gallery-sign:-1; }
+.progress-gallery.is-enhanced .progress-panel { animation:none; }
+.progress-gallery.is-enhanced .progress-panel[hidden].is-leaving { visibility:visible; pointer-events:none; }
+.progress-panel.is-leaving .progress-panel-visual::before { visibility:hidden; }
+.progress-gallery[data-motion="changing"] .progress-panel:not([hidden]) .progress-phone { animation:gallery-device-in .76s var(--ease) both; }
+.progress-gallery[data-motion="changing"] .progress-panel:not([hidden]) .progress-panel-copy { animation:gallery-copy-in .55s var(--ease) .1s both; }
+.progress-panel.is-leaving .progress-phone { animation:gallery-device-out .42s cubic-bezier(.4,0,.6,1) both; }
+.progress-panel.is-leaving .progress-panel-copy { animation:gallery-copy-out .22s ease both; }
+@keyframes gallery-device-in {
+ from { opacity:0; transform:translate3d(calc(var(--gallery-sign) * 64px),14px,0) rotateY(calc(var(--gallery-sign) * 12deg)) scale(.94); }
+ to { opacity:1; transform:translate3d(0,0,0) rotateY(0deg) scale(1); }
+}
+@keyframes gallery-device-out {
+ from { opacity:1; transform:translate3d(0,0,0) rotateY(0deg) scale(1); }
+ to { opacity:0; transform:translate3d(calc(var(--gallery-sign) * -40px),-5px,0) rotateY(calc(var(--gallery-sign) * -9deg)) scale(.96); }
+}
+@keyframes gallery-copy-in {
+ from { opacity:0; transform:translate3d(0,16px,0); }
+ to { opacity:1; transform:translate3d(0,0,0); }
+}
+@keyframes gallery-copy-out { from { opacity:1; } to { opacity:0; } }
+
+.intakes-section { background:var(--paper); }
+.intakes-layout { display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:clamp(40px,6vw,88px); }
+.intakes-stage { width:100%; height:660px; }
+.intake-phone-day { width:min(300px,78%); top:45px; }
+.intakes-copy { max-width:500px; }
+.intakes-heading h2 { margin-top:20px; font-size:clamp(38px,4.2vw,58px); }
+.intakes-heading .section-intro { margin-top:24px; font-size:17px; max-width:440px; }
+.intakes-highlights { grid-template-columns:1fr; gap:25px; margin-top:30px; padding-top:28px; }
+.intakes-highlights article { display:grid; grid-template-columns:25px 1fr; gap:0 17px; }
+.intakes-highlights .icon { grid-row:1 / 3; margin:2px 0 0; }
+.intakes-highlights h3 { font-size:18px; }
+.intakes-highlights p { max-width:none; margin-top:6px; font-size:14px; }
+.intakes-stage::after { left:6%; right:6%; top:19%; bottom:19%; }
+@media (max-width:1000px) {
+ .plan-card { gap:35px; grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr); }
+ .plan-visual { min-height:520px; gap:14px; }
+ .plan-features p { grid-template-columns:1fr; gap:5px; }
+ .plan-features { gap:18px; }
+ .plan-features span { font-size:13px; }
+ .progress-panel { min-height:650px; padding:40px; gap:35px; }
+ .progress-phone { width:270px; }
+ .intakes-layout { gap:38px; }
+ .intakes-stage { height:590px; }
+ .intake-phone-day { width:min(270px,88%); }
+ .intakes-heading h2 { font-size:40px; }
+ .intakes-heading .section-intro { font-size:16px; }
+ .intakes-highlights h3 { font-size:17px; }
+}
+@media (max-width:760px) {
+ .hero h1 .hero-result { font-size:clamp(21px,3.5vw,25px); margin-top:20px; }
+ .plan-card { grid-template-columns:1fr; gap:38px; }
+ .plan-copy { max-width:580px; }
+ .plan-features p { grid-template-columns:105px 1fr; gap:18px; }
+ .plan-features span { font-size:14px; }
+ .plan-visual { width:100%; max-width:610px; margin-inline:auto; min-height:590px; padding-block:30px; }
+ .plan-visual .plan-phone { width:min(250px,44%); }
+ .progress-panel { grid-template-columns:1fr; padding:34px; gap:30px; }
+ .progress-phone { width:250px; }
+ .intakes-layout { grid-template-columns:1fr; gap:35px; }
+ .intakes-copy { display:contents; }
+ .intakes-heading { grid-row:1; }
+ .intakes-heading .section-intro { max-width:520px; }
+ .intakes-stage { grid-row:2; max-width:560px; height:600px; }
+ .intake-phone-day { width:280px; max-width:70%; top:35px; }
+ .intakes-highlights { grid-row:3; margin-top:0; }
+}
+@media (max-width:520px) {
+ .hero h1 { line-height:.98; margin-bottom:22px; }
+ .hero h1 .hero-result { font-size:clamp(18px,4.6vw,23px); margin-top:18px; }
+ .hero-description { font-size:16px; line-height:1.65; }
+ .plan-copy h2 { font-size:38px; }
+ .plan-features p { grid-template-columns:90px 1fr; gap:14px; }
+ .plan-features strong { font-size:14px; }
+ .plan-features span { font-size:13px; }
+ .plan-visual { min-height:clamp(360px,113vw,520px); gap:12px; }
+ .plan-visual .plan-phone { width:45%; }
+ .progress-panel { padding:28px 24px; gap:26px; }
+ .progress-phone { width:240px; }
+ .progress-panel-copy { min-height:265px; }
+ .intakes-heading h2 { font-size:clamp(34px,8.5vw,42px); }
+ .intakes-stage { height:510px; }
+ .intake-phone-day { width:240px; top:25px; }
+ .intakes-layout { gap:30px; }
+}
+@media (prefers-reduced-motion:reduce) {
+ .progress-gallery.is-enhanced .progress-panel[hidden].is-leaving { visibility:hidden; }
+ .progress-panel-copy, .progress-phone { transform:none; opacity:1; }
+}

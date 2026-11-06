@@ -43,6 +43,7 @@
     link.addEventListener('click', () => { link.hash = location.hash; });
   });
 
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   // Without JS every slide stays readable. Controls sit below the product scene.
   const progressTabs = document.querySelector('[data-progress-tabs]');
   if (progressTabs) {
@@ -53,14 +54,31 @@
     const tabs = [...progressTabs.querySelectorAll('button')];
     const panels = tabs.map(tab => document.getElementById(tab.getAttribute('aria-controls')));
     if (tabs.length && panels.every(Boolean)) {
-      let selectedIndex = 0;
-      function selectProgressTab(index, focus = false) {
-        gallery.dataset.direction = index < selectedIndex ? 'previous' : 'next';
-        selectedIndex = (index + tabs.length) % tabs.length;
+      let selectedIndex = -1;
+      function settleGallery() {
+        panels.forEach(panel => panel.classList.remove('is-leaving'));
+        gallery.dataset.motion = 'idle';
+      }
+      function selectProgressTab(index, focus = false, direction) {
+        const nextIndex = (index + tabs.length) % tabs.length;
+        if (nextIndex === selectedIndex) {
+          if (focus) tabs[nextIndex].focus({ preventScroll: true });
+          return;
+        }
+        const previousPanel = panels[selectedIndex];
+        settleGallery();
+        gallery.dataset.direction = direction || (index < selectedIndex ? 'previous' : 'next');
+        if (previousPanel && !reducedMotion.matches) {
+          previousPanel.classList.add('is-leaving');
+          gallery.dataset.motion = 'changing';
+        }
+        selectedIndex = nextIndex;
         tabs.forEach((tab, i) => {
           tab.setAttribute('aria-selected', String(i === selectedIndex));
           tab.tabIndex = i === selectedIndex ? 0 : -1;
           panels[i].hidden = i !== selectedIndex;
+          panels[i].inert = i !== selectedIndex;
+          panels[i].setAttribute('aria-hidden', String(i !== selectedIndex));
         });
         caption.textContent = tabs[selectedIndex].getAttribute('aria-label');
         if (focus) tabs[selectedIndex].focus({ preventScroll: true });
@@ -71,6 +89,10 @@
         panels[i].setAttribute('role', 'tabpanel');
         panels[i].setAttribute('aria-labelledby', tab.id);
         panels[i].tabIndex = 0;
+        panels[i].addEventListener('animationend', event => {
+          if (event.animationName === 'gallery-device-out') panels[i].classList.remove('is-leaving');
+          if (event.animationName === 'gallery-device-in' && i === selectedIndex) settleGallery();
+        });
         tab.addEventListener('click', () => selectProgressTab(i));
         tab.addEventListener('keydown', event => {
           const next = event.key === 'ArrowRight' ? (i + 1) % tabs.length
@@ -78,7 +100,7 @@
             : event.key === 'Home' ? 0 : event.key === 'End' ? tabs.length - 1 : null;
           if (next === null) return;
           event.preventDefault();
-          selectProgressTab(next, true);
+          selectProgressTab(next, true, event.key === 'ArrowLeft' || event.key === 'Home' ? 'previous' : 'next');
         });
       });
       gallery.querySelector('[data-gallery-prev]').addEventListener('click', () => selectProgressTab(selectedIndex - 1));
@@ -107,11 +129,13 @@
         event.stopPropagation();
       }, true);
       selectProgressTab(0);
+      reducedMotion.addEventListener('change', () => {
+        if (reducedMotion.matches) settleGallery();
+      });
       gallery.classList.add('is-enhanced');
       controls.hidden = false;
     }
   }
-  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
 
   // Native dialog gives keyboard users focus containment, Escape and focus return.

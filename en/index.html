@@ -22,10 +22,10 @@
 <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<script src="/preferences.js?v=20261106-4"></script>
-<link rel="stylesheet" href="/styles.css?v=20261106-4">
-<script src="/site-config.js?v=20261106-4" defer></script>
-<script src="/site.js?v=20261106-4" defer></script>
+<script src="/preferences.js?v=20261106-5"></script>
+<link rel="stylesheet" href="/styles.css?v=20261106-5">
+<script src="/site-config.js?v=20261106-5" defer></script>
+<script src="/site.js?v=20261106-5" defer></script>
 
 </head><body><svg class="svg-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
 <symbol id="arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
@@ -87,7 +87,7 @@
 </section>
 <section class="plan-section" id="plan" aria-labelledby="plan-title">
   <div class="plan-card wrap">
-    <div class="plan-copy" data-reveal><p class="eyebrow">WORKOUT PLANNING</p><h2 id="plan-title">Your workout<br><span>program.</span></h2><p class="section-intro">Create workout templates and variations. Arrange them into your own multi-week cycle.</p><div class="plan-features"><p><strong>Templates</strong><span>Save workouts and create variations with different exercises and sets.</span></p><p><strong>Schedule</strong><span>Choose your training days and set reminders.</span></p><p><strong>History</strong><span>Revisit past workouts from your calendar.</span></p></div></div>
+    <div class="plan-copy"><div class="plan-heading" data-reveal><p class="eyebrow">WORKOUT PLANNING</p><h2 id="plan-title">Your workout<br><span>program.</span></h2><p class="section-intro">Create workout templates and variations. Arrange them into your own multi-week cycle.</p></div><div class="plan-features" data-reveal><p><strong>Templates</strong><span>Save workouts and create variations with different exercises and sets.</span></p><p><strong>Schedule</strong><span>Choose your training days and set reminders.</span></p><p><strong>History</strong><span>Revisit past workouts from your calendar.</span></p></div></div>
     <div class="plan-visual" data-reveal="device" data-scroll-scene><div class="plan-phone"><a class="device-phone" href="/assets/screenshots/release/en/iphone/diary.png" data-zoom aria-label="Enlarge: Diary: calendar and workout history"><img src="/assets/screenshots/release/en/iphone/diary.webp" alt="Diary: calendar and workout history" width="804" height="1748" loading="lazy" decoding="async"></a></div><div class="plan-phone plan-phone-schedule"><a class="device-phone" href="/assets/screenshots/release/en/iphone/schedule.png" data-zoom aria-label="Enlarge: Workout schedule and template variations"><img src="/assets/screenshots/release/en/iphone/schedule.webp" alt="Workout schedule and template variations" width="804" height="1748" loading="lazy" decoding="async"></a></div></div>
   </div>
 </section>
@@ -95,6 +95,11 @@
   <div class="wrap">
     <div class="section-heading" data-reveal><div><p class="eyebrow">ANALYTICS AND RESULTS</p><h2 id="progress-title">Progress. <span>In every detail.</span></h2></div></div>
     <div class="progress-gallery" data-reveal="device">
+      <div class="gallery-tabs" data-progress-tabs aria-label="Progress charts" hidden>
+        <button type="button" id="tab-exercise" aria-controls="panel-exercise" aria-label="Exercises">Exercises</button>
+        <button type="button" id="tab-overview" aria-controls="panel-overview" aria-label="Workouts — overview">Workouts</button>
+        <button type="button" id="tab-muscles" aria-controls="panel-muscles" aria-label="Metrics — weight, heart rate and cardio">Metrics</button>
+      </div>
       <div class="progress-explorer" data-progress-slides>
         <div class="progress-panel" id="panel-exercise" data-progress-panel>
           <div class="progress-panel-copy"><p class="panel-kicker">EVERY EXERCISE</p><h3>Your progress.<br><span>In every exercise.</span></h3><p>Track working weights, reps and training volume. Compare your results and follow your personal records.</p></div>
@@ -111,11 +116,6 @@
       </div>
       <div class="gallery-controls" data-gallery-controls hidden>
         <p class="gallery-caption" data-gallery-caption aria-live="polite" aria-atomic="true">Exercises</p>
-        <div class="gallery-dots" data-progress-tabs aria-label="Progress charts">
-          <button type="button" id="tab-exercise" aria-controls="panel-exercise" aria-label="Exercises"><span class="gallery-dot" aria-hidden="true"></span></button>
-          <button type="button" id="tab-overview" aria-controls="panel-overview" aria-label="Workout summary"><span class="gallery-dot" aria-hidden="true"></span></button>
-          <button type="button" id="tab-muscles" aria-controls="panel-muscles" aria-label="Weight, heart rate and cardio"><span class="gallery-dot" aria-hidden="true"></span></button>
-        </div>
         <div class="gallery-arrows"><button type="button" data-gallery-prev aria-label="Previous slide"><svg class="icon" aria-hidden="true"><use href="#arrow"/></svg></button><button type="button" data-gallery-next aria-label="Next slide"><svg class="icon" aria-hidden="true"><use href="#arrow"/></svg></button></div>
       </div>
     </div>

@@ -44,7 +44,7 @@
   });
 
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
-  // Without JS every slide stays readable. Controls sit below the product scene.
+  // Without JS every slide stays readable. Tabs and arrows enhance the same scene.
   const progressTabs = document.querySelector('[data-progress-tabs]');
   if (progressTabs) {
     const gallery = progressTabs.closest('.progress-gallery');
@@ -73,6 +73,7 @@
           gallery.dataset.motion = 'changing';
         }
         selectedIndex = nextIndex;
+        gallery.dataset.activeTab = String(selectedIndex);
         tabs.forEach((tab, i) => {
           tab.setAttribute('aria-selected', String(i === selectedIndex));
           tab.tabIndex = i === selectedIndex ? 0 : -1;
@@ -133,6 +134,7 @@
         if (reducedMotion.matches) settleGallery();
       });
       gallery.classList.add('is-enhanced');
+      progressTabs.hidden = false;
       controls.hidden = false;
     }
   }
@@ -181,7 +183,7 @@
           entry.target.classList.remove('is-visible');
         }
       });
-    }, { threshold: .08, rootMargin: '0px 0px -30px 0px' });
+    }, { threshold: .08, rootMargin: '0px 0px 160px 0px' });
     document.querySelectorAll('[data-reveal]').forEach(node => {
       // Never hide content already in view; keep all content visible without JS.
       if (!reducedMotion.matches && node.getBoundingClientRect().top > innerHeight) node.classList.add('will-reveal');
@@ -199,6 +201,8 @@
   const nativeScrollMotion = CSS.supports('animation-timeline: view()') && CSS.supports('view-timeline-name: --hero-motion');
   const navSections = [...document.querySelectorAll('main > section[id]')];
   const navLinks = [...document.querySelectorAll('.main-nav a')];
+  const siteHeader = document.querySelector('.site-header');
+  const mainNav = document.querySelector('.main-nav');
   let scheduled = false;
   let layoutDirty = true;
   let height = 0;
@@ -206,6 +210,10 @@
   let sceneBounds = [];
   let sectionBounds = [];
   let currentSection = null;
+  let lastScrollY = scrollY;
+  let scrollDirection = 0;
+  let directionalDistance = 0;
+  let headerCompact = false;
   function measureLayout() {
     // Read layout together, only after content or viewport geometry changes.
     const y = scrollY;
@@ -218,12 +226,34 @@
         return { node, property, top: rect.top + y, height: rect.height };
       });
     sectionBounds = navSections.map(section => ({ hash: `#${section.id}`, top: section.getBoundingClientRect().top + y }));
+    if (siteHeader && mainNav) {
+      const collapse = Math.max(0, mainNav.getBoundingClientRect().top - siteHeader.getBoundingClientRect().top - 8);
+      siteHeader.style.setProperty('--header-collapse', `${collapse}px`);
+    }
     layoutDirty = false;
   }
   function updateScroll() {
     scheduled = false;
     if (layoutDirty) measureLayout();
     const y = scrollY;
+    if (siteHeader) {
+      const delta = y - lastScrollY;
+      const direction = Math.sign(delta);
+      let compact = headerCompact;
+      if (y < 140) {
+        compact = false;
+        directionalDistance = 0;
+      } else if (direction) {
+        directionalDistance = direction === scrollDirection ? directionalDistance + Math.abs(delta) : Math.abs(delta);
+        if (directionalDistance > 20) compact = direction > 0;
+      }
+      if (direction) scrollDirection = direction;
+      lastScrollY = y;
+      if (compact !== headerCompact) {
+        headerCompact = compact;
+        siteHeader.dataset.compact = String(compact);
+      }
+    }
     if (progressBar && (!nativeScrollMotion || reducedMotion.matches)) {
       progressBar.style.transform = `scaleX(${pageHeight > 0 ? clamp(y / pageHeight) : 0})`;
     }

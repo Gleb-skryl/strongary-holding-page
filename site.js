@@ -267,6 +267,8 @@
     }
     let current = '';
     sectionBounds.forEach(section => { if (section.top <= y + height * .35) current = section.hash; });
+    // Planning belongs to the training chapter and has no separate navigation item.
+    if (current === '#plan') current = '#training';
     if (current !== currentSection) {
       navLinks.forEach(link => {
         if (link.hash === current) link.setAttribute('aria-current', 'location');

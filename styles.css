@@ -163,8 +163,8 @@ h3 { font-weight: 600; }
 .progress-phone { width: 265px; max-width: 100%; }
 .gallery-controls { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 24px; padding: 26px 4px 0; }
 .gallery-caption { font-size: 13px; font-weight: 550; color: var(--muted); }
-.gallery-tabs { position:relative; isolation:isolate; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); width:min(100%,480px); margin:0 auto 28px; padding:5px; border:1px solid var(--line); border-radius:100px; background:var(--scene); }
-.gallery-tabs::before { content:""; position:absolute; z-index:-1; inset:5px auto 5px 5px; width:calc((100% - 10px) / 3); border-radius:100px; background:var(--ink); transform:translateX(calc(var(--active-tab,0) * 100%)); transition:transform .45s var(--ease); }
+.gallery-tabs { --tab-inset:5px; position:relative; isolation:isolate; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); width:min(100%,480px); margin:0 auto 28px; padding:var(--tab-inset); border:1px solid var(--line); border-radius:100px; background:var(--scene); }
+.gallery-tabs::before { content:""; position:absolute; z-index:-1; inset:var(--tab-inset) auto var(--tab-inset) var(--tab-inset); width:calc((100% - var(--tab-inset) - var(--tab-inset)) / 3); border-radius:100px; background:var(--ink); transform:translateX(calc(var(--active-tab,0) * 100%)); transition:transform .45s var(--ease); }
 .progress-gallery[data-active-tab="1"] { --active-tab:1; }
 .progress-gallery[data-active-tab="2"] { --active-tab:2; }
 .gallery-tabs button { min-height:44px; min-width:0; padding:12px 18px; border:0; border-radius:100px; background:transparent; color:var(--muted); font-size:13px; font-weight:550; transition:color .3s; }
@@ -465,8 +465,9 @@ h3 { font-weight: 600; }
   .plan-visual { min-height: 430px; }
   .plan-phone { width: 205px; }
   .progress-panel { grid-template-columns: 1fr; gap: 32px; padding: 35px; }
-  .is-enhanced .progress-panel { grid-template-rows: 1fr auto; }
-  .progress-panel-copy { min-height: 250px; }
+  .is-enhanced .progress-panel { grid-template-rows: auto 1fr; }
+  .progress-panel-visual { grid-row: 1; grid-template-columns: minmax(0, 1fr); }
+  .progress-panel-copy { grid-row: 2; align-self: start; }
   .progress-panel h3 { font-size: 36px; margin-block: 18px; }
   .progress-panel-copy > p:not(.panel-kicker) { max-width: 420px; }
   .progress-phone { width: 235px; }
@@ -498,7 +499,6 @@ h3 { font-weight: 600; }
   .plan-features span { font-size: 12px; }
   .plan-visual { min-height: 420px; }
   .progress-panel { padding: 28px 24px 30px; gap: 24px; }
-  .progress-panel-copy { min-height: 265px; }
   .progress-panel h3 { font-size: 30px; }
   .progress-panel-copy > p:not(.panel-kicker) { font-size: 15px; }
   .progress-phone { width: 220px; }
@@ -506,8 +506,7 @@ h3 { font-weight: 600; }
   .metric-tags span { font-size: 11px; }
   .metric-tags span + span::before { margin-right: 12px; }
   .gallery-controls { grid-template-columns: 1fr auto; gap: 15px; padding: 18px 0 0; }
-  .gallery-tabs { margin-bottom:22px; }
-  .gallery-tabs button { padding-inline:8px; font-size:11px; }
+  .gallery-tabs button { padding-inline:8px; font-size:12px; }
   .gallery-arrows { gap: 8px; }
   .intakes-showcase { padding: 27px 22px 30px; }
   .intakes-stage { aspect-ratio: .86; }
@@ -776,7 +775,9 @@ h3 { font-weight: 600; }
  .plan-features span { font-size:14px; }
  .plan-visual { width:100%; max-width:610px; margin-inline:auto; min-height:590px; padding-block:30px; }
  .plan-visual .plan-phone { width:min(250px,44%); }
- .progress-panel { grid-template-columns:1fr; padding:34px; gap:30px; }
+ .progress-section .section-heading { margin-bottom:24px; }
+ .gallery-tabs { --tab-inset:2px; margin-bottom:12px; }
+ .progress-panel { grid-template-columns:minmax(0,1fr); min-height:0; padding:24px 34px 34px; gap:30px; }
  .progress-phone { width:250px; }
  .intakes-layout { grid-template-columns:1fr; gap:35px; }
  .intakes-copy { display:contents; }
@@ -796,9 +797,8 @@ h3 { font-weight: 600; }
  .plan-features span { font-size:13px; }
  .plan-visual { min-height:clamp(360px,113vw,520px); gap:12px; }
  .plan-visual .plan-phone { width:45%; }
- .progress-panel { padding:28px 24px; gap:26px; }
+ .progress-panel { padding:24px; gap:26px; }
  .progress-phone { width:240px; }
- .progress-panel-copy { min-height:265px; }
  .intakes-heading h2 { font-size:clamp(34px,8.5vw,42px); }
  .intakes-stage { height:510px; }
  .intake-phone-day { width:240px; top:25px; }

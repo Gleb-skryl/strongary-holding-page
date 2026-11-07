@@ -179,7 +179,7 @@ h3 { font-weight: 600; }
 [data-direction="previous"].is-enhanced .progress-panel { animation-name: gallery-enter-previous; }
 @keyframes gallery-enter-previous { from { opacity: .35; transform: translateX(-18px); } to { opacity: 1; transform: translateX(0); } }
 .screens-note { color: var(--muted); font-size: 11px; text-align: center; padding-block: 20px 0; }
-/* One actual intake screen with three short, concrete highlights. */
+/* Actual intake screens with three short, concrete highlights. */
 .intakes-section { background: var(--white); overflow: clip; }
 .intakes-heading > .section-intro { max-width: 355px; }
 .intakes-showcase { background: transparent; padding: 24px 36px 12px; }
@@ -749,6 +749,38 @@ h3 { font-weight: 600; }
 .intakes-highlights h3 { font-size:18px; }
 .intakes-highlights p { max-width:none; margin-top:6px; font-size:14px; }
 .intakes-stage::after { left:6%; right:6%; top:19%; bottom:19%; }
+.intakes-stage.intakes-pair { display:flex; align-items:center; justify-content:center; gap:24px; height:auto; min-height:620px; padding:45px 8px; }
+.intakes-pair .intake-phone { position:relative; flex:0 1 260px; width:calc((100% - 24px) / 2); max-width:none; min-width:0; top:auto; left:auto; right:auto; translate:none; margin:0; animation:none; }
+.intakes-pair .intake-phone-day { transform:translateY(calc(25px - var(--drift,.5) * 40px)) rotate(-4deg); }
+.intakes-pair .intake-phone-stats { transform:translateY(calc(-25px + var(--drift,.5) * 40px)) rotate(4deg); }
+.intakes-pair figcaption { margin-top:20px; text-align:center; font-size:12px; font-weight:600; color:var(--muted); line-height:1.4; }
+@media (min-width:1001px) {
+ .intakes-layout { grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr); gap:clamp(40px,5vw,72px); }
+}
+@media (max-width:1000px) {
+ .intakes-stage.intakes-pair { min-height:480px; gap:18px; }
+ .intakes-pair .intake-phone { width:calc((100% - 18px) / 2); }
+}
+@media (max-width:760px) {
+ .intakes-stage.intakes-pair { min-height:0; padding-block:30px; }
+}
+@media (max-width:520px) {
+ .intakes-stage.intakes-pair { gap:14px; padding-inline:6px; }
+ .intakes-pair .intake-phone { width:calc((100% - 14px) / 2); }
+ .intakes-pair figcaption { margin-top:14px; font-size:11px; }
+}
+@supports (animation-timeline:view()) and (view-timeline-name:--hero-motion) {
+ @media (prefers-reduced-motion:no-preference) {
+  .intakes-pair .intake-phone-day { animation:intake-pair-day linear both; animation-timeline:--intake-motion; }
+  .intakes-pair .intake-phone-stats { animation:intake-pair-month linear both; animation-timeline:--intake-motion; }
+ }
+}
+@keyframes intake-pair-day { from { transform:translateY(25px) rotate(-4deg); } to { transform:translateY(-15px) rotate(-4deg); } }
+@keyframes intake-pair-month { from { transform:translateY(-25px) rotate(4deg); } to { transform:translateY(15px) rotate(4deg); } }
+@media (prefers-reduced-motion:reduce) {
+ .intakes-pair .intake-phone-day { transform:rotate(-4deg); }
+ .intakes-pair .intake-phone-stats { transform:rotate(4deg); }
+}
 /* Desktop tabs share the card without moving with its animated slides. */
 @media (min-width:761px) {
  .progress-section { --progress-space:clamp(40px,6vh,80px); padding-block:var(--progress-space); scroll-margin-top:calc(-1 * var(--progress-space)); }

@@ -749,6 +749,22 @@ h3 { font-weight: 600; }
 .intakes-highlights h3 { font-size:18px; }
 .intakes-highlights p { max-width:none; margin-top:6px; font-size:14px; }
 .intakes-stage::after { left:6%; right:6%; top:19%; bottom:19%; }
+/* Desktop tabs share the card without moving with its animated slides. */
+@media (min-width:761px) {
+ .progress-section { --progress-space:clamp(40px,6vh,80px); padding-block:var(--progress-space); scroll-margin-top:calc(-1 * var(--progress-space)); }
+ .progress-section .section-heading { margin-bottom:24px; }
+ .progress-section .section-heading h2 { margin-top:16px; font-size:clamp(38px,4.8vh,58px); }
+ .progress-gallery { --gallery-inset:clamp(32px,4.5vw,64px); --gallery-gap:clamp(32px,4.2vw,60px); --gallery-headroom:330px; position:relative; }
+ .progress-gallery.is-enhanced > .gallery-tabs { position:absolute; z-index:2; top:28px; left:var(--gallery-inset); width:min(440px,calc((100% - var(--gallery-inset) - var(--gallery-inset) - var(--gallery-gap)) / 2.05)); margin:0; }
+ .progress-gallery .progress-panel { grid-template-columns:minmax(0,1fr) minmax(0,1.05fr); min-height:0; padding:28px var(--gallery-inset); gap:var(--gallery-gap); }
+ .progress-gallery.is-enhanced .progress-panel-copy { padding-top:80px; }
+ .progress-gallery .progress-phone { width:clamp(190px,calc((100vh - var(--gallery-headroom)) * .486),300px); }
+ .progress-gallery .gallery-controls { padding-top:16px; }
+}
+@media (min-width:761px) and (max-width:1000px) {
+ .progress-gallery { --gallery-headroom:360px; }
+ .progress-gallery .gallery-tabs button { padding-inline:6px; font-size:12px; }
+}
 @media (max-width:1000px) {
  .plan-card { gap:35px; grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr); }
  .plan-visual { min-height:520px; gap:14px; }
